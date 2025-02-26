@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { cardVariants, faultVariant } from '../variants';
 import { EducationCardItem, ExperienceCardItem, ProjectCardItem } from '@/lib/interfaces';
 import MyChip from './MyChip';
-import { RxExit } from "react-icons/rx";
+import { getGDriveImageLink } from '@/lib/services';
 import NextImage from  'next/image';
 import { Image } from "@nextui-org/react";
 import VerticalDivider from '@/app/components/VerticalDivider';
@@ -12,15 +12,23 @@ import VerticalDivider from '@/app/components/VerticalDivider';
 const DateRange: React.FC<{ date: string, isExpanded: boolean }> = ({ date, isExpanded }) => {
     const [startDate, endDate] = date.split('-').map(date => date.trim());
     return (
-        <div className='flex flex-row justify-start w-full'>
-            <h2>{startDate}</h2>
-            <motion.div 
-                initial={{width: 15}}
-                animate={{width: isExpanded ? 50 : 15, transition: {duration: 0.8}}}
-                className='h-[1px] bg-themecolor self-center mx-2' 
-            />
-            {endDate == "Present" ? <h2><em>{endDate}</em></h2> : <h2>{endDate}</h2>}
-        </div>
+        <>
+            <div className='hidden lg:flex flex-row justify-start w-full'>
+                <h2 className='mx-0 text-nowrap'>{startDate}</h2>
+                <motion.div 
+                    initial={{width: 15}}
+                    animate={{width: isExpanded ? 50 : 15, transition: {duration: 0.8}}}
+                    className='hidden xl:block h-[1px] bg-themecolor self-center mx-2' 
+                />
+                <div className='block xl:hidden w-[15px] h-[1px] bg-themecolor self-center mx-2'/>
+                {endDate == "Present" ? <h2 className='text-nowrap'><em>{endDate}</em></h2> : <h2 className='text-nowrap'>{endDate}</h2>}
+            </div>
+            <div className='flex lg:hidden flex-row justify-end'>
+                <h2 className='mx-0 text-nowrap'>{startDate}</h2>
+                <div className='w-[15px] h-[1px] bg-themecolor self-center mx-2'/>
+                {endDate == "Present" ? <h2 className='text-nowrap'><em>{endDate}</em></h2> : <h2 className='text-nowrap'>{endDate}</h2>}
+            </div>
+        </>
     );
 }
 
@@ -31,20 +39,40 @@ export const Card: React.FC<{ children: React.ReactNode, isExpanded: boolean, on
             onClick={onClick}
             animate={isExpanded && 'animate'}
             variants={cardVariants}
-            className='m-3 w-full h-auto rounded-lg p-4'
+            className='my-3 lg:mx-3 w-full h-auto rounded-lg p-2 xl:p-4'
         >
             {children}
         </motion.div>
     );
 };
 
+export const CourseList: React.FC<{ courses: string[], isExpanded: boolean }> = ({ courses, isExpanded }) => {
+    if (isExpanded && courses.length > 0) {
+        return (
+            <div className='flex flex-col justify-start mt-3 lg:mt-0'>
+                <h2 className='text-themecolor'>Courses</h2>
+                <p className='text-sm mr-1 text-wrap'>
+                    {courses.map((course, index) => {
+                        if (index === courses.length - 1){
+                            return (<span className='hover:text-themecolor' key={index}>{course}</span>)
+                        } else {
+                            return (<span className='hover:text-themecolor' key={index}>{course}, </span>)
+                        }
+                    })}
+                </p>
+            </div>
+        )
+    } else {
+        return (<></>)
+    }
+};
+
 export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ experience }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     return (
         <Card isExpanded={isExpanded} onClick={() => setIsExpanded(!isExpanded)}>
-            <motion.div
-                className='flex flex-row h-max'
-            >
+            {/* Laptop Screen */}
+            <div className='hidden lg:flex flex-row h-max'>
                 <div className='w-1/3 flex flex-col justify-between'>
                     <DateRange date={experience.date} isExpanded={isExpanded}/>
                     {isExpanded && experience.profiles.length > 0 && 
@@ -61,7 +89,7 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                                 </ul>
                             </motion.div>
                         }
-                    {isExpanded && experience.skills.length > 0 ?
+                    {isExpanded && experience.skills.length > 0 &&
                         <motion.div 
                             variants={faultVariant}
                             initial='initial'
@@ -74,19 +102,6 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                                     <MyChip skill={skill} index={index} key={index}/>
                                 ))}
                             </div>
-                        </motion.div> : 
-                        <motion.div 
-                            variants={faultVariant}
-                            initial='initial'
-                            animate='animate'
-                            className='flex flex-col justify-start'
-                        >
-                            <div className='mr-2 flex flex-row justify-start flex-wrap'>
-                                {experience.skills.slice(0,2).map((skill, index) => (
-                                    <MyChip skill={skill} index={index} key={index}/>
-                                ))}
-                                <span className='text-lg'>...</span>
-                            </div>
                         </motion.div>
                     }
                 </div>
@@ -95,16 +110,22 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                     <div className='flex flex-col h-auto'>
                         <div className='w-full flex flex-row justify-between'>
                             <h1 className='text-lg font-semibold tracking-wider text-themecolor'>{experience.title}</h1>
-                            {isExpanded && <RxExit className='text-themecolor text-xl' onClick={() => {window.open(experience.url)}}/>}
                         </div>
                         <div className='w-full flex flex-row justify-between'>
-                            <h1>{experience.company}</h1>
-                            {isExpanded && <h1>{experience.location}</h1>}
+                            <motion.a
+                                href={experience.url}
+                                className='w-fit'
+                                initial={{color: '#ffffff'}}
+                                whileTap={{color: '#fb923c'}}
+                            >{experience.company}</motion.a>
+                            {isExpanded && <h1 className='hidden xl:block'>{experience.location}</h1>}
                         </div>
+                        {isExpanded && <h1 className='block xl:hidden'>{experience.location}</h1>}
                     </div>
                     <div className='mt-5 flex flex-col justify-evenly'>
                         <motion.p
                             variants={faultVariant}
+                            className='text-sm'
                             initial='initial'
                             animate='animate'
                             exit='exit'
@@ -126,7 +147,69 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                         }
                     </div>
                 </div>
-            </motion.div>
+            </div>
+
+            {/* Mobile Screen */}
+            <div className='flex lg:hidden flex-col h-max'>
+                <div className='w-full flex flex-row justify-start md:justify-around'>
+                    <div className='w-full sm:w-1/2 flex flex-col justify-between'>
+                        <h1 className='text-lg font-semibold tracking-wider text-themecolor text-nowrap'>{experience.title}</h1>
+                        <motion.a
+                            className='w-fit' 
+                            href={experience.url}
+                            initial={{color: '#ffffff'}}
+                            whileFocus={{color: '#fb923c'}}
+                        >
+                            {experience.company}
+                        </motion.a>
+                        <div className='w-full flex sm:hidden flex-row justify-between'>
+                            <DateRange date={experience.date} isExpanded={isExpanded} />
+                            {experience.location && <h1 className='w-fit self-end'>{experience.location}</h1>}
+                        </div>
+                    </div>
+                    <div className='hidden sm:flex w-1/2 flex-col justify-between'>
+                        <DateRange date={experience.date} isExpanded={isExpanded} />
+                        {isExpanded && experience.location && <h1 className='w-fit self-end'>{experience.location}</h1>}
+                    </div>
+                </div>
+
+                {isExpanded && experience.profiles.length > 0 && <div className='w-full flex flex-col justify-start'>
+                    <h2>Previous Profiles: </h2>
+                    <ul className='ml-3'>
+                        {experience.profiles.map((profile, index) => (
+                            <li key={index} className='mx-1 text-themecolor'>{profile}</li>
+                        ))}
+                    </ul>
+                </div>}
+
+                {isExpanded && 
+                    <div className='flex flex-col pt-4'>
+                        <p className='text-sm'>{experience.description}</p>
+                        <motion.ul
+                            variants={faultVariant}
+                            initial='initial'
+                            animate='animate'
+                            exit='exit'
+                            className='ml-2 px-2 list-disc'
+                        >
+                            {experience.content.map((content, index) => (
+                                <li className='text-sm text-wrap py-1' key={index}>{content}</li>
+                            ))}
+                        </motion.ul>
+                    </div>
+                }
+
+                {isExpanded && experience.skills.length > 0 &&
+                    <div className='w-full flex flex-col justify-start'>
+                        <h2>Skills</h2>
+                        <div className='mr-2 flex flex-row justify-start flex-wrap'>
+                            {experience.skills.map((skill, index) => (
+                                <MyChip skill={skill} index={index} key={index}/>
+                            ))}
+                        </div>
+                    </div>
+                }
+            </div>
         </Card>
     );
 };
@@ -135,41 +218,64 @@ export const EducationCard: React.FC<{ education: EducationCardItem }> = ({ educ
     const [isExpanded, setIsExpanded] = useState(false);
     return (
         <Card isExpanded={isExpanded} onClick={() => setIsExpanded(!isExpanded)}>
-            <div className='flex flex-row h-max'>
+            {/* Laptop Screen */}
+            <div className='hidden lg:flex flex-row h-max'>
                 <div className='w-2/5 flex flex-col justify-between'>
                     <DateRange date={education.date} isExpanded={isExpanded} />
-                    {isExpanded && education.courses.length > 0 &&
-                        <div className='flex flex-col justify-start'>
-                            <h2 className='text-themecolor'>Courses</h2>
-                            <p className='text-sm mr-1 text-wrap'>
-                                {education.courses.map((course, index) => {
-                                    if (index === education.courses.length - 1){
-                                        return (<span className='hover:text-themecolor' key={index}>{course}</span>)
-                                    } else {
-                                        return (<span className='hover:text-themecolor' key={index}>{course}, </span>)
-                                    }
-                                })}
-                            </p>
-                        </div>
-                    }
+                    <CourseList courses={education.courses} isExpanded={isExpanded}/>
                 </div>
                 <VerticalDivider isExpanded={isExpanded}/>
                 <div className='w-3/5 flex flex-col ml-3'>
                     <div className='w-full flex flex-row justify-between'>
                         <h1 className='text-lg font-semibold tracking-wider text-themecolor'>{education.title} : {education.majors}</h1>
-                        {isExpanded && <RxExit className='text-themecolor text-xl' onClick={() => {window.open(education.url)}}/>}
+                        {isExpanded && <h1 className='hidden xl:block'>{education.location}</h1>}
                     </div>
-                    <div className='w-full flex flex-row justify-between'>
-                        <h1>{education.school}</h1>
-                        {isExpanded && <h1>{education.location}</h1>}
-                    </div>
+                    <motion.a
+                            href={education.url}
+                            className='w-fit'
+                            initial={{color: '#ffffff'}}
+                            whileTap={{color: '#fb923c'}}
+                    >
+                            {education.school}
+                    </motion.a>
+                    {isExpanded && <h1 className='block xl:hidden'>{education.location}</h1>}
                     <div className='mt-5'>
                         {isExpanded ? 
-                            <p>{education.description}</p> :
-                            <p className='line-clamp-2'>{education.description}</p>
+                            <p className='text-sm'>{education.description}</p> :
+                            <p className='text-sm line-clamp-2'>{education.description}</p>
                         }
                     </div>
                 </div>
+            </div>
+            {/* Mobile Screen */}
+            <div className='flex lg:hidden flex-col h-max'>
+                <div className='w-full flex flex-row justify-start md:justify-around'>
+                    <div className='w-full sm:w-1/2 flex flex-col justify-between'>
+                        <h1 className='text-lg font-semibold tracking-wider text-themecolor text-nowrap'>{education.title} : {education.majors}</h1>
+                        <motion.a
+                            className='w-fit' 
+                            href={education.url}
+                            initial={{color: '#ffffff'}}
+                            whileFocus={{color: '#fb923c'}}
+                        >
+                            {education.school}
+                        </motion.a>
+                        <div className='w-full flex sm:hidden flex-row justify-between'>
+                            <DateRange date={education.date} isExpanded={isExpanded} />
+                            {education.location && <h1 className='w-fit self-end'>{education.location}</h1>}
+                        </div>
+                    </div>
+                    <div className='hidden sm:flex w-1/2 flex-col justify-between'>
+                        <DateRange date={education.date} isExpanded={isExpanded} />
+                        {isExpanded && education.location && <h1 className='w-fit self-end'>{education.location}</h1>}
+                    </div>
+                </div>
+                {isExpanded && 
+                    <div className='flex flex-col py-2'>
+                        <p>{education.description}</p>
+                        <CourseList courses={education.courses} isExpanded={isExpanded}/>
+                    </div>
+                }
             </div>
         </Card>
     )
@@ -179,68 +285,98 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
     const [isExpanded, setIsExpanded] = useState(false);
     return (
         <Card isExpanded={isExpanded} onClick={() => setIsExpanded(!isExpanded)}>
-            <div className='flex flex-row h-max'>
-                <div className='w-2/5 flex flex-col justify-between'>
-                    <div className='p-1 mx-2 h-auto border-[1px] border-themecolor/[0.5]'>
+            {/* Laptop Screen */}
+            <div className='hidden xl:flex flex-row h-max'>
+                <div className='w-auto flex flex-col justify-between'>
+                    {isExpanded ? <div className='relative p-1 mx-2 w-fit min-w-[400px] h-full border-[1px] border-themecolor/[0.5]'>
                         <Image
                             removeWrapper
                             as={NextImage}
-                            width={265}
-                            height={200}
-                            src={project.image}
+                            fill
+                            src={getGDriveImageLink(project.image)}
                             alt={project.title}
                         />
                     </div>
-                    {isExpanded && project.links.length > 0 && 
-                        <motion.div
-                            className='m-2 p-2 flex flex-row justify-start flex-wrap'
-                            animate={{
-                                opacity: isExpanded ? 1 : 0,
-                                x: isExpanded ? 0 : -100,
-                                transition: {duration: 0.5}
-                            }}
-                        >
-                            {project.links.map((link, index) => (
-                                <motion.a 
-                                    key={index} 
-                                    href={link.url} 
-                                    className='mr-4 text-3xl'
-                                    initial={{
-                                        scale: 1,
-                                        color: '#ffffff'
-                                    }}
-                                    whileHover={{
-                                        scale: 1.2,
-                                        color: '#fb923c'
-                                    }}
-                                >
-                                    {link.icon}
-                                </motion.a>
-                            ))}
-                        </motion.div>
-                    }
-
-                    {isExpanded && project.tags.length > 0 && 
-                        <motion.div
-                            animate={{
-                                opacity: isExpanded ? 1 : 0,
-                                x: isExpanded ? 0 : -100,
-                                transition: {duration: 0.5}
-                            }}
-                            className='m-2 p-2 flex flex-row justify-start flex-wrap bg-themeopacque rounded-lg'
-                        >
-                            <h2 className=' font-weight-600 mr-1'>Tags: </h2>
-                            {project.tags.map((tag, index) => (
-                                <MyChip skill={tag} index={index} key={index}/>
-                            ))}
-                        </motion.div>
-                    }
+                    :
+                    <div className='relative p-1 mx-2 w-fit min-w-[200px] h-full border-[1px] border-themecolor/[0.5]'>
+                        <Image
+                            removeWrapper
+                            as={NextImage}
+                            fill
+                            src={getGDriveImageLink(project.image)}
+                            alt={project.title}
+                        />
+                    </div>}
                 </div>
                 <VerticalDivider isExpanded={isExpanded}/>
-                {isExpanded ? 
-                    <div className='ml-1 w-3/5 p-2 flex flex-col justify-evenly'>
-                        <h2 className='font-semibold text-lg tracking-wider text-themecolor'>{project.title}</h2>
-                        <p>{project.description}</p>
+                <div className='w-auto px-3 flex flex-col justify-start'>
+                    <h1 className='font-semibold text-lg tracking-wider text-themecolor'>{project.title}</h1>
+
+                    <div className='pt-2 font-semi flex flex-row flex-wrap'>
+                        <h1 className='text-md mr-2'>Skills:</h1>
+                        {project.tags.map((tag, index) => (
+                            <MyChip skill={tag} index={index} key={index}/>
+                        ))}
+                    </div>
+
+                    <div className='pt-2'>
+                        <p className='text-sm'>{project.description}</p>
+                        {isExpanded && project.content.length > 0 && 
+                            <motion.ul
+                                variants={faultVariant}
+                                initial='initial'
+                                animate='animate'
+                                exit='exit'
+                                className='ml-2 px-2 list-disc'
+                            >
+                                {project.content.map((content, index) => (
+                                    <li className='text-sm text-wrap' key={index}>{content}</li>
+                                ))}
+                            </motion.ul>
+                        }
+                    </div>
+
+                    {isExpanded && project.links.length > 0 && <div 
+                        className='m-2 p-2 flex flex-row justify-start w-[500] bg-themeopacque rounded-lg'
+                    >
+                        {project.links.map((link, index) => (
+                            <motion.a 
+                                key={index} 
+                                href={link.url} 
+                                className='mr-10 text-3xl'
+                                initial={{
+                                    scale: 1,
+                                    color: '#ffffff'
+                                }}
+                                whileHover={{
+                                    scale: 1.2,
+                                    color: '#fb923c'
+                                }}
+                            >
+                                {link.icon}
+                            </motion.a>
+                        ))}
+                    </div>}
+                </div>
+            </div>
+
+            {/* Mobile Screen */}
+            <div className='flex xl:hidden flex-col h-max p-1 md:p-2'>
+                <div className='w-fit px-1 h-auto border-[1px] border-themecolor/[0.5] first-of-type:self-center'>
+                    <Image
+                        removeWrapper
+                        as={NextImage}
+                        width={400}
+                        height={150}
+                        className='m-1 mx-auto'
+                        src={getGDriveImageLink(project.image)}
+                        alt={project.title}
+                    />
+                </div>
+                <h1 className='font-semibold text-lg text-themecolor tracking-wider'>{project.title}</h1>
+                <div className='my-2'>
+                    <p className='text-sm'>{project.description}</p>
+                    {isExpanded && project.content.length > 0 &&
                         <motion.ul
                             variants={faultVariant}
                             initial='initial'
@@ -252,19 +388,13 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                                 <li className='text-sm text-wrap' key={index}>{content}</li>
                             ))}
                         </motion.ul>
-                    </div>
-                :
-                    <div className='ml-1 w-3/5 p-2 flex flex-col justify-evenly'>
-                        <h2 className='font-semibold text-lg tracking-wider text-themecolor'>{project.title}</h2>
-                        <p className=' text-wrap'>{project.description}</p>
-                        <div className='mr-1 flex flex-row justify-start truncate'>
-                            {project.tags.slice(0, 4).map((tag, index) => (
-                                <MyChip skill={tag} index={index} key={index}/>
-                            ))}
-                            <span className='text-lg'>...</span>
-                        </div>
-                    </div>
-                }
+                    }
+                </div>
+                <div className='mb-2 flex flex-row justify-start flex-wrap'>
+                    {project.tags.map((tag, index) => (
+                        <MyChip skill={tag} index={index} key={index}/>
+                    ))}
+                </div>
             </div>
         </Card>
     );

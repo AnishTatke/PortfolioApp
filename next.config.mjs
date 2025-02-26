@@ -4,7 +4,14 @@ const nextConfig = {
     distDir: 'dist',
     images: {
         unoptimized: true,
-        domains: ['images.unsplash.com']
+        domains: ['drive.google.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'drive.google.com',
+                pathname: '**',
+            },
+        ]
     },
     env: {
         EMAILJS_SERVICE_ID: process.env.EMAILJS_SERVICE_ID,

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Backdrop: React.FC = () => {
     return (
-        <div className='fixed -z-10 w-screen h-screen bg-bboard'>
+        <div className='hidden lg:-z-10 fixed w-screen h-screen bg-bboard'>
             <motion.div
                 initial={{ y: -500 }}
                 animate={{ y: 0 }}

@@ -5,7 +5,7 @@ const Intro: React.FC<{heroData: string[]}> = ({ heroData }) => {
     return (
         <div>
             <SectionTitle index={1} title='About Me' />
-            <div className='p-1 tracking-wide'>
+            <div className='p-1 tracking-wide text-center lg:text-left'>
                 {heroData.map((data, index) => (
                     <p key={index} className='text-md font-light'>{data}</p>
                 ))}

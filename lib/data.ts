@@ -3,7 +3,6 @@ import { ExperienceCardItem, EducationCardItem } from "./interfaces";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiIeee } from "react-icons/si";
-import { title } from "process";
 
 export const links = [
   {
@@ -40,10 +39,10 @@ export const experiencesData: ExperienceCardItem[] = [
     company: "Dee Dee Labs. Pvt. Ltd.",
     url: "https://deedeelabs.org/",
     location: "Pune, India",
-    description: "Internship at a startup in Pune, India. Worked on mobile app and game development using Unity for rehabilitation of patients with prosthetic arms.",
+    description: "Interned at Dee Dee Labs, where I developed a mobile application where doctors could monitor patient progress and provide rehabilitation exercises. I also developed a prosthetic controlled video game for accelerating rehabilitation.",
     content: [
-      "Developed a proprietary mobile app for authentication bypass and rehabilitation progress monitoring; improved patient outcomes by 30% and reduced server latency by 60%.",
-      "Engineered a video game utilizing prosthetic devices for rehabilitation; gamification method resulted in a 45% acceleration of the rehabilitation process."
+      "Formulated and deployed a cross-platform mobile application featuring rehabilitation progress monitoring of patients with prosthetic devices",
+      "Fabricated an innovative video game in Unity controlled by prosthetic devices for rehabilitation of amputee patients"
     ],
     profiles: [],
     skills: ["Angular JS", "SQL" ,"Unity", "C#", "AWS", "MQTT"],
@@ -56,16 +55,37 @@ export const experiencesData: ExperienceCardItem[] = [
     url: "https://quantiphi.com/",
     location: "Bangalore, India",
     description:
-      "At Quantiphi Analytics, I developed and launched cloud-based web apps using predictive audio recognition and natural language processing data, enhancing user engagement and decision-making.",
+      "At Quantiphi Analytics, my primary work was designing and developing production-ready web applications and APIs for clients. I worked in collaboration with machine learning engineers, platform engineers and front-end designers to deliver high-quality products.",
     content: [
-      "Developed and deployed cloud-based web applications, incorporating data from predictive audio recognition and natural language processing models to optimize user engagement and decision-making processes, yielding a 15% increase in user retention.",
-      "Led the creation of a fuzzy search engine for NoSQL databases, driving a 20% boost in client satisfaction. Engineered scalable event-driven pipelines to accelerate results, reducing web application latency by 15%.",
+      "Pioneered a user interface on GCP App Engine for Humana, leveraging sentiment analysis and speech-to-text processing of client data for actionable insights.",
+      "Devised an event-driven architecture integrating Cloud Bucket and MongoDB, streamlining and automating record processing",
+      "Developed an interactive ReactJS platform for customer call analysis for Gryphon, featuring a backend API for generating speech-to-text transcripts, analyzing call sentiment, and populating SQL databases.",
+      "Delivered real-time analytics on call performance, empowering data-driven decision-making",
+      "Engineered a cloud-native application for processing handwritten documents using NLP for TIAA, advancing business analytics capabilities.",
+      "Curated a comprehensive dashboard by consolidating client data and prediction results with PostgreSQL queries",
+      "Earned Google Cloud Associate Cloud Engineer (ACE) Certification, enhancing expertise in cloud development and deployments, contributing to the successful delivery of multiple applications on GCP."
     ],
     profiles: ["Framework Engineer"],
     skills: ["React.JS", "Next.JS", "Node.JS", "MongoDB", "SQL", "PostgreSQL", "App-Engine", "Kubernetes", "Big Query"],
     image: "url",
     date: "June 2021 - June 2023",
   },
+  {
+    title: "Graduate Research Assistant, Machine Learning",
+    company: "Computational Medical Imaging Lab, University of Florida",
+    url: "https://cmilab.nephrology.medicine.ufl.edu/",
+    location: "Gainesville",
+    description: "Working as ML Expertise Research Assistant, I'm involved in developing machine learning models for medical imaging applications. I'm currently working on a developing end-to-end plugins for training and inference on histo-pathological applications.",
+    content: [
+      "Trained advanced segmentation models with HiPerGator’s A100 GPUs for detecting nephrological features required for pathology.",
+      "Implemented cutting-edge morphology and image processing to enhance prediction results",
+      "Deployed complete AI pipelines as Docker plugins on cloud platforms for inference",
+    ],
+    profiles: [],
+    skills: ["Python", "Tensorflow", "PyTorch", "OpenCV", "Docker", "Deep Learning", "Image Processing"],
+    image: "url",
+    date: "August 2024 - Present",
+  }
 ] as const;
 
 export const educationsData: EducationCardItem[] = [
@@ -77,7 +97,7 @@ export const educationsData: EducationCardItem[] = [
     location: "Gainesville, FL",
     description:
       "I'm studying Computer Science with a focus on Machine Learning and Artificial Intelligence. I'm currently seeking full-time opportunities in areas such as Machine Learning, Data Science, and Software Development.",
-    courses: ["Machine Learning", "Advanced Data Structures", "Computer Vision", "Data Engineering"],
+    courses: ["Advanced Machine Learning", "Advanced Data Structures", "Computer Vision", "Data Engineering, Software Engineering", "AI Ethics", "Distributed Operating Systems"],
     image: "url",
     date: "August 2023 - Present",
   },
@@ -88,7 +108,7 @@ export const educationsData: EducationCardItem[] = [
     url: "https://mitwpu.edu.in/",
     location: "Pune, India",
     description:
-      "I graduated with a Bachelor's degree in Computer Science, where I learned the basics of the field and gained in-depth knowledge of engineering disciplines for problem-solving. Additionally, I was part of various student clubs and representative groups.",
+      "I graduated with a Bachelor's degree in Computer Science, where I learned the basics of the field and gained in-depth knowledge of engineering disciplines for problem-solving. I led various projects and workshops affiliated with university clubs, helping my leadership and communication skills.",
     courses: ["Data Structures", "Algorithms", "Web Development", "Database Management", "Operating Systems", "Computer Networks", "Software Engineering"],
     image: "url",
     date: "June 2017 - June 2021",
@@ -108,11 +128,11 @@ export const projectsData = [
     description:
       "EenthPatthar is a web application for property transactions, connecting buyers and sellers for efficient interactions.",
     content: [
-      "Designed Figma frames for a commercial real estate website, implemented front-end development in React.JS, and styled elements using Bootstrap CSS to ensure visual consistency increasing client satisfaction by 75%.",
-      "Programmed the backend of the website using Node.JS; implemented REST-API to manage data interactions with Firestore Database, and integrated Firebase Authentication to ensure secure user access."
+      "Designed Figma frames for a commercial real estate website, implemented in React-Bootstrap with Material UI for layout elements, seamless navigation and data display.",
+      "Programmed a Node.JS backend with REST-API to manage data interactions with Firestore database, and integrated Firebase authentication to ensure secure user access."
     ],
     tags: ["React.JS", "Node.JS", "Firebase", "Firestore", "Bootstrap", "Figma"],
-    image: "https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "",
   },
   {
     title: "Garbage Classification using Deep Learning",
@@ -136,7 +156,7 @@ export const projectsData = [
       "Published a paper in an IEEE journal that analyzes the performance of the models."
     ],
     tags: ["Python", "Tensorflow", "Flutter", "Dart", "Firebase"],
-    image: "https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "1VNS1H5l6QnAr5i5ztDrZf-TErqVHelI9"
   },
   {
     title: "Prog Rock vs World",
@@ -156,7 +176,27 @@ export const projectsData = [
       "Implemented models such as Simple Voting classifiers, RNNs, and LSTM networks for making predictions over songs(all snippets combined) achieving validation accuracy of about 85% - 86%."
     ],
     tags: ["Python", "PyTorch", "Librosa", "Pandas", "Numpy", "Matplotlib", "Scikit-learn"],
-    image: "https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "1CXJ2yK2noV1KZpRdku-vZQjqvUT8bnZE",
+  },
+  {
+    title: "QuickQuiz",
+    links: [
+      {
+        "name": "Github",
+        "url": "https://github.com/AnishTatke/quickquiz",
+        "icon": React.createElement(FaGithub)
+      },
+    ],
+    description: "Project built at ShellHacks 2024, a hackathon hosted for all tech enthusiasts in Southeast USA. My team and I built an AI-powered tool provided for anyone to learn anything faster, better and on their own.",
+    content: [
+      "Devised an AI-powered React web app using Material-UI and SCSS.",
+      "Built a Flask backend to parse PDFs, extract text, and perform chunking, tokenization and embedding in VectorDB.",
+      "Integrated OpenAI's GPT-3 for generating summaries, answering doubts and providing explanations.",
+      "Build feature to generate quizzes and flashcards, with dynamic difficulty levels and adaptive scoring mechanism.",
+      "We also provided voice assistance features, adding inclusivity and accessibility to the app."
+    ],
+    tags: ["React.JS", "Flask", "OpenAI", "Python", "Flask", "ChromaDB"],
+    image: "18Nj48OkRIsaNb2z814WyXDmzWexclCjE",
   }
 ] as const;
 
@@ -166,12 +206,12 @@ export const contactData = {
   location: "Gainesville, FL",
   resumes: [
     {
-      name: "SDE Resume",
-      url: "https://drive.google.com/file/d/1h-wHiveIdSAqQu_QCrlfZJs2bqMwHeUv/view?usp=sharing",
+      name: "SD Resume",
+      url: "https://drive.google.com/file/d/19Ba8NZ0zO02wkgDMSRD9mo-FDY0IQeg0/view?usp=sharing",
     },
     {
-      name: "MLE Resume",
-      url: "https://drive.google.com/file/d/1YRCvONpDYX9Eto99HksXpgZ4zQnE8Wcf/view?usp=sharing",
+      name: "ML Resume",
+      url: "https://drive.google.com/file/d/115MHGA2DVmzdMvg2sZucER0mVl0rBOhQ/view?usp=sharing",
     },
   ],
   socials: [

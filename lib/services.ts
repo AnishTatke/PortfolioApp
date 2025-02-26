@@ -32,3 +32,8 @@ export const sendEmail = async (emailData: any) => {
         return false;
     });
 };
+
+export const getGDriveImageLink = (fileId: string) => {
+    const url = `https://drive.google.com/thumbnail?id=${fileId}&sz=s4000`
+    return url
+}

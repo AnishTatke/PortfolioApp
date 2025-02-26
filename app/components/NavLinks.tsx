@@ -24,7 +24,7 @@ const NavLinks: React.FC< NavLinksProps > = ({ links }) => {
                         <div className='relative bg-themecolor flex h-[1px] w-5  self-center items-center right-4'>
                             <div className='relative h-2 w-2 left-[19px] -top-1/2 border-2 border-themecolor rounded-full'></div>
                         </div>
-                        <a key={index} href={link.hash} className="text-lg">
+                        <a key={index} href={link.hash} className="text-lg transition-all duration-300">
                             {link.name}
                         </a>
                     </motion.div>

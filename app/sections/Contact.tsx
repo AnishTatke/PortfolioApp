@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { motion } from 'framer-motion';
 import SectionTitle from '@/app/components/SectionTitle';
 import { Card } from '../components/Cards';
 import { sendEmail } from '@/lib/services';
@@ -34,7 +35,7 @@ const Contact: React.FC = () => {
         <div>
             <SectionTitle index={4} title='Contact' />
             <Card isExpanded={true} onClick={() => {}}>
-                <h2 className='text-themecolor font-semibold text-xl mx-2'>Ping Me From Here</h2>
+                <h2 className='text-themecolor font-semibold text-lg mx-2 mb-4'>Ping Me From Here</h2>
                 <form className='p-3 flex flex-col justify-start' onSubmit={handleSubmit}>
                     <label className='text-lg'>Name</label>
                     <input 
@@ -65,7 +66,19 @@ const Contact: React.FC = () => {
                         onChange={(e) => setMessage(e.target.value)}
                         className='w-full p-2 my-1 bg-bboard border-2 border-themecolor/50 rounded-md'
                     />
-                    <button type='submit' className='w-1/4 p-2 my-2 mx-auto bg-themecolor text-bboard text-xl font-semibold rounded-md'>Submit</button>
+                    <motion.button 
+                        type='submit'
+                        className='w-1/4 p-1 my-2 mx-auto bg-themecolor text-bboard text-xl font-semibold rounded-md'
+                        whileHover={{ 
+                            color: '#fb923c',
+                            backgroundColor: "#ac896830"
+                        }}
+                        whileTap={{
+                            color: '#fb923c',
+                            backgroundColor: "#ac896830",
+                            scale: 1.05
+                        }}
+                    >Submit</motion.button>
                 </form>
             </Card>
         </div>
