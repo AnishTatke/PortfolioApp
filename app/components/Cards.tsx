@@ -153,7 +153,7 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
             <div className='flex lg:hidden flex-col h-max'>
                 <div className='w-full flex flex-row justify-start md:justify-around'>
                     <div className='w-full sm:w-1/2 flex flex-col justify-between'>
-                        <h1 className='text-lg font-semibold tracking-wider text-themecolor text-nowrap'>{experience.title}</h1>
+                        <h1 className='text-lg font-semibold tracking-wider text-themecolor md:text-nowrap'>{experience.title}</h1>
                         <motion.a
                             className='w-fit' 
                             href={experience.url}
@@ -251,7 +251,7 @@ export const EducationCard: React.FC<{ education: EducationCardItem }> = ({ educ
             <div className='flex lg:hidden flex-col h-max'>
                 <div className='w-full flex flex-row justify-start md:justify-around'>
                     <div className='w-full sm:w-1/2 flex flex-col justify-between'>
-                        <h1 className='text-lg font-semibold tracking-wider text-themecolor text-nowrap'>{education.title} : {education.majors}</h1>
+                        <h1 className='text-lg font-semibold tracking-wider text-themecolor md:text-nowrap'>{education.title} : {education.majors}</h1>
                         <motion.a
                             className='w-fit' 
                             href={education.url}
@@ -373,7 +373,7 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                         alt={project.title}
                     />
                 </div>
-                <h1 className='font-semibold text-lg text-themecolor tracking-wider'>{project.title}</h1>
+                <h1 className='font-semibold text-lg text-themecolor tracking-wider md:text-nowrap'>{project.title}</h1>
                 <div className='my-2'>
                     <p className='text-sm'>{project.description}</p>
                     {isExpanded && project.content.length > 0 &&

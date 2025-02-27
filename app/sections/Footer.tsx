@@ -8,34 +8,32 @@ const Footer: React.FC<{contactData: any}> = ({ contactData }) => {
             <div className='w-1/3 h-[initial]'>
                 <ul className='h-full flex flex-col justify-evenly'>
                     <motion.a
-                        className='m-1 text-md tracking-wider'
+                        className='m-1 text-sm md:text-md tracking-wider'
                         href={"mailto:"+contactData.email}
                         initial={{color: '#ffffff'}}
                         whileHover={{color: '#fb923c'}}
                         whileTap={{ scale: 1.02,originX: 0, color: '#fb923c' }}
-                    >
-                    Email: {contactData.email}</motion.a>
+                    >{contactData.email}</motion.a>
                     <motion.a
-                        className='m-1 text-md tracking-wider'
+                        className='m-1 text-sm md:text-md tracking-wider'
                         href={"mailto:"+contactData.email}
                         initial={{color: '#ffffff'}}
                         whileHover={{color: '#fb923c'}}
                         whileTap={{ scale: 1.02, originX: 0, color: '#fb923c' }}
-                    >University Email: {contactData.universityEmail}</motion.a>
-                    <motion.a
-                        className='m-1 text-md tracking-wider'
-                        href={"mailto:"+contactData.email}
+                    >{contactData.universityEmail}</motion.a>
+                    <motion.span
+                        className='m-1 text-sm md:text-md tracking-wider'
                         initial={{color: '#ffffff'}}
                         whileHover={{color: '#fb923c'}}
                         whileTap={{ scale: 1.02,originX: 0, color: '#fb923c' }}
-                    >Location: {contactData.location}</motion.a>
+                    >{contactData.location}</motion.span>
                 </ul>
             </div>
             <div className='w-1/3 h-[initial] justify-items-center self-center'>
                 <div className='w-max flex flex-col justify-evenly'>
                     {contactData.resumes.map((resume: any, index: number) => (
                         <motion.a
-                            className='w-fit p-1 my-2 mx-auto text-xl bg-themecolor text-bboard font-semibold rounded-md'
+                            className='w-fit p-1 my-2 mx-auto text-sm md:text-xl bg-themecolor text-bboard font-semibold rounded-md'
                             whileHover={{ 
                                 color: '#fb923c',
                                 backgroundColor: "#ac896830"
@@ -45,7 +43,7 @@ const Footer: React.FC<{contactData: any}> = ({ contactData }) => {
                                 backgroundColor: "#ac896830",
                                 scale: 1.05
                             }}
-                            key={index} 
+                            key={index}
                             href={resume.url}
                         >
                             {resume.name}
@@ -57,7 +55,7 @@ const Footer: React.FC<{contactData: any}> = ({ contactData }) => {
                 <div className='w-max flex flex-col justify-evenly'>
                     {contactData.socials.map((social: any, index: number) => (
                         <motion.a
-                            className='my-2 mr-10 text-3xl'
+                            className='my-2 sm:mr-5 text-3xl'
                             initial={{
                                 color: '#ffffff'
                             }}
