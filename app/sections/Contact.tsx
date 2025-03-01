@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import SectionTitle from '@/app/components/SectionTitle';
 import { Card } from '../components/Cards';
 import { sendEmail } from '@/lib/services';
+import { FormSubmitButton } from '../components/FormSubmitButton';
 
 
 
@@ -66,19 +67,7 @@ const Contact: React.FC = () => {
                         onChange={(e) => setMessage(e.target.value)}
                         className='w-full p-2 my-1 bg-bboard border-2 border-themecolor/50 rounded-md'
                     />
-                    <motion.button 
-                        type='submit'
-                        className='w-1/4 p-1 my-2 mx-auto bg-themecolor text-bboard text-xl font-semibold rounded-md'
-                        whileHover={{ 
-                            color: '#fb923c',
-                            backgroundColor: "#ac896830"
-                        }}
-                        whileTap={{
-                            color: '#fb923c',
-                            backgroundColor: "#ac896830",
-                            scale: 1.05
-                        }}
-                    >Submit</motion.button>
+                    <FormSubmitButton />
                 </form>
             </Card>
         </div>

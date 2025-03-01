@@ -6,8 +6,23 @@ import Pic from '../../public/Pic.jpg'
 import { motion } from 'framer-motion';
 import { headingVariants } from '@/app/variants';
 
+
+
 const MyIntro: React.FC = () => {
     const [isHighLight, setIsHighLight] = useState(false);
+    
+
+    // const handleClick = (event: any) => {
+    //     if (event.shiftKey && isAuthenticated) {
+    //         openModal();
+    //         return;
+    //     }
+    //     if (!event.shiftKey) {
+    //         event.preventDefault(); // Stop normal click from triggering
+    //         return;
+    //     }
+    // }
+
     return (
         <div className='w-full flex flex-col p-2 lg:pl-3 items-center'>
             <div className='w-full text-center'>

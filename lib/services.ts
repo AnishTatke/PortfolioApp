@@ -37,3 +37,9 @@ export const getGDriveImageLink = (fileId: string) => {
     const url = `https://drive.google.com/thumbnail?id=${fileId}&sz=s4000`
     return url
 }
+
+export const getGDriveFileID = (url: string) => {
+    const splitUrl = url.split("/").slice(-2)
+    const fileId = splitUrl[0]
+    return fileId
+}

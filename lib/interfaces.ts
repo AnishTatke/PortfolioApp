@@ -52,3 +52,15 @@ export interface FormObject {
     email: string;
     message: string;
 }
+
+// MongoDB Interfaces
+export interface UserProfileInterface {
+    name: string;
+    primary_profile: string;
+    other_profiles: string[];
+    emails: string[];
+    phone_number: string[];
+    location: string;
+    image: string;
+    about: string;
+}

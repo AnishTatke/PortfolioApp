@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, Children, cloneElement } from 'react';
 import { motion } from 'framer-motion';
 import { cardVariants, faultVariant } from '../variants';
 import { EducationCardItem, ExperienceCardItem, ProjectCardItem } from '@/lib/interfaces';
@@ -8,6 +8,7 @@ import { getGDriveImageLink } from '@/lib/services';
 import NextImage from  'next/image';
 import { Image } from "@nextui-org/react";
 import VerticalDivider from '@/app/components/VerticalDivider';
+import { MdEdit } from "react-icons/md";
 
 const DateRange: React.FC<{ date: string, isExpanded: boolean }> = ({ date, isExpanded }) => {
     const [startDate, endDate] = date.split('-').map(date => date.trim());
@@ -45,6 +46,48 @@ export const Card: React.FC<{ children: React.ReactNode, isExpanded: boolean, on
         </motion.div>
     );
 };
+
+export const FormCard: React.FC<{ 
+    children: React.ReactNode
+    }> = ({ children }) => {
+    return (
+        <motion.div
+            whileHover='hover'
+            variants={cardVariants}
+            className='my-3 w-full h-auto rounded-lg p-2 xl:p-4 border-themecolor border-[1px]'
+        >
+            {children}
+        </motion.div>
+    );
+};
+
+export const EditCard: React.FC<{
+    children: React.ReactNode,
+    title: string
+}> = ({ children, title }) => {
+    const [canEdit, setCanEdit] = useState(false);
+
+    return (
+        <motion.div
+            whileHover='hover'
+            variants={cardVariants}
+            className='my-1 w-full h-auto rounded-lg p-4 border-themecolor border-[1px]'
+        >
+            <div className='flex flex-row justify-between'>
+                <h2 className="text-2xl font-bold mb-4">{title}</h2>
+                <MdEdit className="text-2xl" onClick={() => setCanEdit(!canEdit)} />
+            </div>
+            {Children.map(children, child => {
+                if (React.isValidElement(child)) {
+                    return React.cloneElement(child as React.ReactElement<any>, { canEdit });
+                }
+            }
+            )}
+        </motion.div>
+    );
+}
+
+
 
 export const CourseList: React.FC<{ courses: string[], isExpanded: boolean }> = ({ courses, isExpanded }) => {
     if (isExpanded && courses.length > 0) {

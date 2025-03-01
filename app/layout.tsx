@@ -5,6 +5,7 @@ import Logo from "@/app/assets/logo.png";
 import Backdrop from "./components/Backdrop";
 import { Providers } from "./providers";
 import dotenv from "dotenv";
+import { connectToDB } from "@/lib/db/mongo";
 dotenv.config();
 
 const inter = Oswald({ weight: '300', subsets: ["latin"] });
@@ -20,6 +21,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  connectToDB();
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>    

@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import LeftIntro from "./sections/LeftIntro";
 import Backdrop from "./components/Backdrop";
@@ -8,6 +9,8 @@ import { links, heroData, experiencesData, projectsData, contactData, educations
 import MyIntro from "./sections/MyIntro";
 import OneScreen from "./sections/OneScreen";
 
+import { AdminAuthModal } from "./components/AdminAuthModal";
+
 export default function Home() {
   const rightSectionData = {
     heroData,
@@ -16,6 +19,8 @@ export default function Home() {
     projectsData,
     contactData,
   };
+  
+
   return (
     <main className="overflow-x-hidden">
       <Backdrop />
@@ -37,6 +42,7 @@ export default function Home() {
           <RightSection data={rightSectionData}/>
           <Footer contactData={contactData} />
         </div>
+        <AdminAuthModal />
       </div>
 
     </main>
