@@ -54,7 +54,10 @@ export interface FormObject {
 }
 
 // MongoDB Interfaces
-export interface UserProfileInterface {
+
+export interface DataInterface{};
+
+export interface UserProfileInterface extends DataInterface {
     name: string;
     primary_profile: string;
     other_profiles: string[];
@@ -63,4 +66,16 @@ export interface UserProfileInterface {
     location: string;
     image: string;
     about: string;
+}
+
+export interface ExperienceInterface extends DataInterface {
+    title: string;
+    company: string;
+    location: string;
+    start_date: string;
+    end_date: string;
+    description: string;
+    points: string[];
+    technologies: string[];
+    url: string;
 }

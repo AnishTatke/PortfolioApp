@@ -5,7 +5,7 @@ import Logo from "@/app/assets/logo.png";
 import Backdrop from "./components/Backdrop";
 import { Providers } from "./providers";
 import dotenv from "dotenv";
-import { connectToDB } from "@/lib/db/mongo";
+import { connectToDB } from "@/lib/mongo";
 dotenv.config();
 
 const inter = Oswald({ weight: '300', subsets: ["latin"] });

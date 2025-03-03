@@ -1,21 +1,22 @@
+"use server";
 import { NextResponse } from "next/server";
 import { connectToDB } from "@/lib/mongo";
 
 export async function GET() {
     try{
         const db = await connectToDB();
-        const profile = await db.collection("user").findOne();
-        if (!profile) {
+        const data = await db.collection("experience").find().toArray();
+        if (!data) {
             return NextResponse.json({
-                error: "Profile not found"
+                error: "Experience not found"
             }, {
                 status: 404
             });
         }
-        return NextResponse.json(profile);
+        return NextResponse.json(data);
     } catch (err) {
         return NextResponse.json({
-            error: "Failed to get profile"
+            error: "Failed to get Experience"
         }, {
             status: 500
         });

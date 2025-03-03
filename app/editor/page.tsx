@@ -1,10 +1,46 @@
 "use client";
-import React, { useEffect } from 'react';
+import React from 'react';
 import Backdrop from '../components/Backdrop';
 import { Profile } from './sections/Profile';
-import { EditCard } from '../components/Cards';
+import { Experiences } from './sections/Experiences';
+import { EditCard, ExpandableCard } from '../components/Cards';
+import { IoMdAdd } from "react-icons/io";
+import { AddButton } from './components/FormButtons';
+
 
 const EditorPage: React.FC = () => {
+    const editableListSections = [
+        {
+            title: 'Profile',
+            components: <Profile />,
+            iterable: false
+        },
+        {
+            title: 'Experience',
+            components: <Experiences />,
+            iterable: true
+        },
+        // {
+        //     title: 'Education',
+        //     components: <></>
+        // },
+        // {
+        //     title: 'Skills',
+        //     components: <></>
+        // },
+        // {
+        //     title: 'Projects',
+        //     components: <></>
+        // },
+        // {
+        //     title: 'Publications',
+        //     components: <></>
+        // },
+        // {
+        //     title: 'Certifications',
+        //     components: <></>
+        // }
+    ];
 
     return (
         <main className='h-full w-full'>
@@ -17,9 +53,14 @@ const EditorPage: React.FC = () => {
                     You can also add images and videos to your post.
                 </p>
 
-                <EditCard title='Profile'>
-                    <Profile />
-                </EditCard>
+                <div className='flex flex-col gap-4 mt-8'>
+                    {editableListSections.map((section, index) => (
+                            <ExpandableCard key={index} title={section.title}>
+                                {section.components}
+                            </ExpandableCard>
+                        ))
+                    }
+                </div>
             </div>
         </main>
     );

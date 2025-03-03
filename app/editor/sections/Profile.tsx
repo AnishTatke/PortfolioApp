@@ -3,59 +3,46 @@ import { useState, useEffect } from 'react';
 import { FormSubmitButton } from '@/app/components/FormSubmitButton';
 import { UserProfileInterface } from '@/lib/interfaces';
 
-import NamedField from '../components/NamedField';
-import ListField from '../components/ListField';
+import { NamedField, NamedFormField, NamedFormTextArea } from '../components/NamedField';
+import { ListField, ListFormField } from '../components/ListField';
 import { SingleImage } from '../components/SingleImage';
+import { EditCard } from '@/app/components/Cards';
 
-const ProfileForm: React.FC<{ profile: UserProfileInterface | any, setProfile: any }> = ({ profile, setProfile }) => {
+const ProfileForm: React.FC<{
+  profile: UserProfileInterface | any,
+  setProfile: any, 
+  setCanEdit: any
+}> = ({ profile, setProfile, setCanEdit }) => {
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    setProfile({ ...profile, [e.target.name]: e.target.value });
+    console.log(e.target.name, e.target.value);
+    setProfile((profile: any) => ({
+      ...profile,
+      [e.target.name]: e.target.value
+    }));
+    console.log(profile)
+
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Submitting Profile:', profile);
+    setCanEdit(false);
   };
 
   return (
-    <form 
-    onSubmit={handleSubmit}
-    className='flex flex-col gap-4'>
-    <input
-      type="text"
-      name="name"
-      placeholder="Name"
-      value={profile.name}
-      onChange={handleChange}
-      className="p-2 border-themeopacque border-[1px] bg-transparent text-white rounded" />
-    <input
-      type="text"
-      name="primary_profile"
-      placeholder="Primary Profile"
-      value={profile.primary_profile}
-      onChange={handleChange}
-      className="p-2 border-themeopacque border-[1px] bg-transparent text-white rounded" />
-    <input
-      type="text"
-      name="location"
-      placeholder="Location"
-      value={profile.location}
-      onChange={handleChange}
-      className="p-2 border-themeopacque border-[1px] bg-transparent text-white rounded" />
-    <input
-      type="text"
-      name="image"
-      placeholder="Profile Image URL"
-      value={profile.image}
-      onChange={handleChange}
-      className="p-2 border-themeopacque border-[1px] bg-transparent text-white rounded" />
-    <textarea
-      name="about"
-      placeholder="About"
-      value={profile.about}
-      onChange={handleChange}
-      className="p-2 border-themeopacque border-[1px] bg-transparent text-white rounded" />
-    <FormSubmitButton />
+    <form
+      onSubmit={handleSubmit}
+      className='flex flex-col gap-4'
+    >
+      <NamedFormField name='name' value={profile.name} handleChange={handleChange} />
+      <ListFormField name='emails' values={profile.emails} handleChange={handleChange} />
+      <ListFormField name='phone_number' values={profile.phone_number} handleChange={handleChange} />
+      <NamedFormField name='primary_profile' value={profile.primary_profile} handleChange={handleChange} />
+      <ListFormField name='other_profiles' values={profile.other_profiles} handleChange={handleChange} />
+      <NamedFormField name='location' value={profile.location} handleChange={handleChange} />
+      <NamedFormTextArea name='about' value={profile.about} handleChange={handleChange} />
+      <FormSubmitButton />
     </form>
   );
 };
@@ -63,9 +50,9 @@ const ProfileForm: React.FC<{ profile: UserProfileInterface | any, setProfile: a
 const ProfileCard: React.FC<{ profile: UserProfileInterface | any }> = ({ profile }) => {
   return (
     <div className='flex flex-row'>
-      <div className='flex flex-col'>
+      <div className='flex flex-col w-2/3'>
         <NamedField name='Name' value={profile.name} />
-        <div className='w-2/3 flex flex-row'>
+        <div className='flex flex-row'>
           <div className='w-1/2'>
             <ListField name="Email" values={profile.emails} />
             <ListField name="Phone" values={profile.phone_number} />
@@ -85,7 +72,20 @@ const ProfileCard: React.FC<{ profile: UserProfileInterface | any }> = ({ profil
   );
 }
 
-async function fetchProfile (setProfile: any, setError: any) {
+const ProfileSection: React.FC<{
+  profile: UserProfileInterface | any,
+  setProfile: any,
+  canEdit?: boolean,
+  setCanEdit?: React.Dispatch<React.SetStateAction<boolean>>
+}> = ({ profile, setProfile, canEdit, setCanEdit }) => {
+  if (canEdit) {
+    return <ProfileForm profile={profile} setProfile={setProfile} setCanEdit={setCanEdit} />;
+  } else {
+    return <ProfileCard profile={profile} />;
+  }
+};
+
+async function fetchProfile(setProfile: any, setError: any) {
   try {
     const res = await fetch('/api/profile');
     if (!res.ok) {
@@ -103,7 +103,9 @@ async function fetchProfile (setProfile: any, setError: any) {
   }
 }
 
-export const Profile: React.FC<{ canEdit?: boolean }> = ({ canEdit }) => {
+
+
+export const Profile: React.FC = () => {
   const [profile, setProfile] = useState<UserProfileInterface>();
   const [error, setError] = useState<string | null>(null);
 
@@ -119,13 +121,9 @@ export const Profile: React.FC<{ canEdit?: boolean }> = ({ canEdit }) => {
     return <p>Loading...</p>;
   }
 
-  if (canEdit) {
-    return (
-      <ProfileForm profile={profile} setProfile={setProfile} />
-    );
-  } else {
-    return (
-      <ProfileCard profile={profile} />
-    )
-  }
+  return (
+    <EditCard>
+      <ProfileSection profile={profile} setProfile={setProfile}/>
+    </EditCard>
+  )
 };

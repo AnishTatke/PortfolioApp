@@ -1,3 +1,4 @@
+"use server";
 import { MongoClient, Db } from "mongodb";
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://anishtatke:o1x7cZ4qvNlivLhx@onlycluster.ctznq.mongodb.net/?retryWrites=true&w=majority&appName=OnlyCluster";
 const OPTIONS = {};

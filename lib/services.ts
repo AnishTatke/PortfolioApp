@@ -43,3 +43,12 @@ export const getGDriveFileID = (url: string) => {
     const fileId = splitUrl[0]
     return fileId
 }
+
+export const capitalize = (s: string) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+export const removeUnderScores = (s: string) => {
+    return s.replace(/_/g, ' ')
+}
