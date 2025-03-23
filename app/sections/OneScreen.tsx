@@ -6,6 +6,7 @@ import Education from './Education';
 import Experience from './Experience';
 import Projects from './Projects';
 import Contact from './Contact';
+import Skills from './Skills';
 
 const OneScreen: React.FC<{data: any}> = ({ data }) => {
     return (
@@ -24,6 +25,9 @@ const OneScreen: React.FC<{data: any}> = ({ data }) => {
                 </div>
                 <div id='mobile-projects' className='my-10 w-full'>
                     <Projects projects={data.projectsData}/>
+                </div>
+                <div id='mobile-skills' className='my-10 w-full'>
+                    <Skills skillData={data.skillsData}/>
                 </div>
                 <div id='mobile-contacts' className='my-10 w-full'>
                     <Contact />

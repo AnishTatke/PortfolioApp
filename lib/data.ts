@@ -1,8 +1,87 @@
 import React from "react";
-import { ExperienceCardItem, EducationCardItem } from "./interfaces";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { SiIeee } from "react-icons/si";
+import { ExperienceCardItem, EducationCardItem, SkillTypeItem } from "./interfaces";
+
+import {
+  FaGithub,
+  FaLinkedin,
+  FaCode,
+  FaDatabase,
+  FaPython,
+  FaJava,
+  FaPhp,
+  FaHtml5,
+  FaReact,
+  FaNodeJs,
+  FaVuejs,
+  FaAngular,
+  FaDocker,
+  FaGitAlt,
+  FaLaptopCode,
+  FaUnity
+} from "react-icons/fa";
+import { 
+  IoLogoJavascript
+} from "react-icons/io5";
+import { 
+  TbCloudCode,
+  TbBrandCSharp,
+  TbSql,
+  TbBrandReactNative,
+} from "react-icons/tb";
+import { 
+  FaXTwitter,
+  FaC,
+  FaMeta
+} from "react-icons/fa6";
+import { 
+  SiIeee,
+  SiFramework,
+  SiTypescript,
+  SiCplusplus,
+  SiPostgresql,
+  SiMongodb,
+  SiDart,
+  SiDjango,
+  SiFlask,
+  SiPytorch,
+  SiTensorflow,
+  SiLangchain,
+  SiApachehadoop,
+  SiIonic,
+  SiFlutter,
+  SiApacheairflow,
+  SiTableau,
+  SiApachespark,
+  SiGooglecloud,
+  SiKubernetes,
+  SiGooglebigquery,
+  SiAndroidstudio,
+  SiOpenai,
+  SiNumpy,
+  SiScikitlearn,
+  SiPandas,
+  SiNvidia,
+  SiOpencv,
+  SiSpacy,
+  SiHuggingface
+} from "react-icons/si";
+import { 
+  DiRedis,
+  DiCss3,
+} from "react-icons/di";
+import { 
+  RiNextjsLine,
+  RiTailwindCssFill,
+} from "react-icons/ri";
+import { 
+  LuArrowRightLeft,
+} from "react-icons/lu";
+import {
+  Programming,
+  AIML,
+  DeepSpeed,
+  Pinecone
+} from "../app/components/svgs";
 
 export const links = [
   {
@@ -199,6 +278,114 @@ export const projectsData = [
     image: "18Nj48OkRIsaNb2z814WyXDmzWexclCjE",
   }
 ] as const;
+
+export const skillsData: SkillTypeItem[] = [
+  {
+    title: "Programming Languages",
+    type: "programming language",
+    skills: ["Python", "JavaScript", "TypeScript", "Java", "C++", "C#", "PHP", "DART"],
+  },
+  {
+    title: "Databases",
+    type: "database",
+    skills: ["SQL", "MongoDB", "PostgreSQL", "Redis", "ChromaDB", "FAISS", "Pinecone"],
+  },
+  {
+    title: "Machine Learning/AI",
+    type: "mlai",
+    skills: ["Tensorflow", "PyTorch", "DeepSpeed", "CUDA", "LangChain", "LangGraph", "numpy", "Scikit-Learn", "OpenCV", "Pandas", "spaCy", "transformers", "OpenAI"],
+  },
+  {
+    title: "Frameworks",
+    type: "framework",
+    skills: ["Git", "Hadoop", "Tableau", "Airflow", "Spark"],
+  },
+  {
+    title: "Web Development",
+    type: "webdev",
+    skills: ["React.JS", "Next.JS", "Node.JS","HTML", "CSS", "Angular.JS", "Vue.JS", "Django", "Flask", "Tailwind", "Ionic", "Flutter", "REST APIs"],
+  },
+  {
+    title: "Cloud Technologies",
+    type: "cloud",
+    skills: ["Docker", "Google Cloud Platform", "Kubernetes", "BigQuery"],
+  },
+  {
+    title: "Softwares & Tools",
+    type: "software",
+    skills: ["Unity", "Android Studios"],
+  },
+] as const;
+
+
+export const skillIconMap: {[key: string]: any} = {
+  "programming language": React.createElement(Programming),
+  "database": React.createElement(FaDatabase),
+  "mlai": React.createElement(AIML),
+  "framework": React.createElement(SiFramework),
+  "cloud": React.createElement(TbCloudCode),
+  "webdev": React.createElement(FaCode),
+  "software": React.createElement(FaLaptopCode),
+  "python": React.createElement(FaPython),
+  "javascript": React.createElement(IoLogoJavascript),
+  "typescript": React.createElement(SiTypescript),
+  "java": React.createElement(FaJava),
+  "c#": React.createElement(TbBrandCSharp),
+  "c": React.createElement(FaC),
+  "c++": React.createElement(SiCplusplus),
+  "php": React.createElement(FaPhp),
+
+  "dart": React.createElement(SiDart),
+  "postgresql": React.createElement(SiPostgresql),
+  "mongodb": React.createElement(SiMongodb),
+  "sql": React.createElement(TbSql),
+  "redis": React.createElement(DiRedis),
+  "pinecone": React.createElement(Pinecone),
+  "faiss": React.createElement(FaMeta),
+
+  "html": React.createElement(FaHtml5),
+  "css": React.createElement(DiCss3),
+  "react.js": React.createElement(FaReact),
+  "next.js": React.createElement(RiNextjsLine),
+  "node.js": React.createElement(FaNodeJs),
+  "vue.js": React.createElement(FaVuejs),
+  "angular.js": React.createElement(FaAngular),
+  "react native": React.createElement(TbBrandReactNative),
+  "django": React.createElement(SiDjango),
+  "flask": React.createElement(SiFlask),
+  "rest api": React.createElement(LuArrowRightLeft),
+  "tailwind": React.createElement(RiTailwindCssFill),
+  "ionic": React.createElement(SiIonic),
+  "flutter": React.createElement(SiFlutter),
+
+  "pytorch": React.createElement(SiPytorch),
+  "tensorflow": React.createElement(SiTensorflow),
+  "langchain": React.createElement(SiLangchain),
+  "langgraph": React.createElement(SiLangchain),
+  "deepspeed": React.createElement(DeepSpeed),
+  "numpy": React.createElement(SiNumpy),
+  "scikit-learn": React.createElement(SiScikitlearn),
+  "pandas": React.createElement(SiPandas),
+  "cuda": React.createElement(SiNvidia),
+  "opencv": React.createElement(SiOpencv),
+  "spacy": React.createElement(SiSpacy),
+  "transformers": React.createElement(SiHuggingface),
+  "openai": React.createElement(SiOpenai),
+
+  "git": React.createElement(FaGitAlt),
+  "hadoop": React.createElement(SiApachehadoop),
+  "tableau": React.createElement(SiTableau),
+  "airflow": React.createElement(SiApacheairflow),
+  "spark": React.createElement(SiApachespark),
+
+  "google cloud platform": React.createElement(SiGooglecloud),
+  "kubernetes": React.createElement(SiKubernetes),
+  "bigquery": React.createElement(SiGooglebigquery),
+  "docker": React.createElement(FaDocker),
+
+  "unity": React.createElement(FaUnity),
+  "android studios": React.createElement(SiAndroidstudio),
+}
 
 export const contactData = {
   email: "nish.tatke@gmail.com",

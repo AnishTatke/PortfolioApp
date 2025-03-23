@@ -47,6 +47,12 @@ export interface ProjectCardItem {
     image: string;
 }
 
+export interface SkillTypeItem {
+    title: string;
+    type: string;
+    skills: string[];
+}
+
 export interface FormObject {
     name: string;
     email: string;

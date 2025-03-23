@@ -33,7 +33,7 @@ const Contact: React.FC = () => {
 
     return (
         <div>
-            <SectionTitle index={4} title='Contact' />
+            <SectionTitle index={5} title='Contact' />
             <Card isExpanded={true} onClick={() => {}}>
                 <h2 className='text-themecolor font-semibold text-lg mx-2 mb-4'>Ping Me From Here</h2>
                 <form className='p-3 flex flex-col justify-start' onSubmit={handleSubmit}>

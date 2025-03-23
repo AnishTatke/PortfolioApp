@@ -6,6 +6,7 @@ import Projects from './Projects';
 import Contact from './Contact';
 import Footer from './Footer';
 import Header from './Header';
+import Skills from './Skills';
 
 const RightSection: React.FC<{ data: any}> = ({ data }) => {
     return (
@@ -23,6 +24,9 @@ const RightSection: React.FC<{ data: any}> = ({ data }) => {
                 </div>
                 <div id='projects' className='anchor my-10 px-5'>
                     <Projects projects={data.projectsData} />
+                </div>
+                <div id='skills' className='anchor my-10 px-5'>
+                    <Skills skillData={data.skillsData}/>
                 </div>
                 <div id='contact' className='my-10 px-5'>
                     <Contact />

@@ -4,7 +4,7 @@ import Backdrop from "./components/Backdrop";
 import RightSection from "./sections/RightSection";
 import Header from "./sections/Header";
 import Footer from "./sections/Footer";
-import { links, heroData, experiencesData, projectsData, contactData, educationsData } from "@/lib/data";
+import { links, heroData, experiencesData, projectsData, contactData, educationsData, skillsData } from "@/lib/data";
 import MyIntro from "./sections/MyIntro";
 import OneScreen from "./sections/OneScreen";
 
@@ -15,6 +15,7 @@ export default function Home() {
     educationsData,
     projectsData,
     contactData,
+    skillsData,
   };
   return (
     <main className="overflow-x-hidden">

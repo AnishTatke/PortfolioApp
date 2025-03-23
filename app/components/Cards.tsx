@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cardVariants, faultVariant } from '../variants';
-import { EducationCardItem, ExperienceCardItem, ProjectCardItem } from '@/lib/interfaces';
-import MyChip from './MyChip';
+import { EducationCardItem, ExperienceCardItem, ProjectCardItem, SkillTypeItem } from '@/lib/interfaces';
+import { MyChip, SkillChip } from './MyChip';
 import { getGDriveImageLink } from '@/lib/services';
 import NextImage from  'next/image';
 import { Image } from "@nextui-org/react";
@@ -337,7 +337,7 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                     </div>
 
                     {isExpanded && project.links.length > 0 && <div 
-                        className='m-2 p-2 flex flex-row justify-start w-[500] bg-themeopacque rounded-lg'
+                        className='my-2 p-2 flex flex-row justify-start w-fit'
                     >
                         {project.links.map((link, index) => (
                             <motion.a 
@@ -373,7 +373,8 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                         alt={project.title}
                     />
                 </div>
-                <h1 className='font-semibold text-lg text-themecolor tracking-wider md:text-nowrap'>{project.title}</h1>
+
+                <h1 className='pr-2 font-semibold text-lg text-themecolor tracking-wider md:text-nowrap'>{project.title}</h1>
                 <div className='my-2'>
                     <p className='text-sm'>{project.description}</p>
                     {isExpanded && project.content.length > 0 &&
@@ -395,7 +396,44 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                         <MyChip skill={tag} index={index} key={index}/>
                     ))}
                 </div>
+                {isExpanded && project.links.length > 0 && <div 
+                        className='px-2 pt-2 flex flex-row justify-start w-fit'
+                    >
+                        {project.links.map((link, index) => (
+                            <motion.a 
+                                key={index}
+                                href={link.url} 
+                                className='mr-10 text-3xl'
+                                initial={{
+                                    scale: 1,
+                                    color: '#ffffff'
+                                }}
+                                whileTap={{
+                                    scale: 1.2,
+                                    color: '#fb923c'
+                                }}
+                            >
+                                {link.icon}
+                            </motion.a>
+                        ))}
+                </div>}
             </div>
         </Card>
     );
 };
+
+export const SkillTypeCard: React.FC<{ skilltype: SkillTypeItem }> = ({ skilltype }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    return (
+        <Card isExpanded={isExpanded} onClick={() => setIsExpanded(!isExpanded)}>
+            <div className='flex flex-col justify-start'>
+                <h1 className='py-[1px] text-lg font-semibold'>{skilltype.title}</h1>
+                <div className='flex flex-row flex-wrap justify-start'>
+                    {skilltype.skills.map((skill, index) => (
+                        <SkillChip skill={skill} index={index} skilltype={skilltype.type} key={index}/>
+                    ))}
+                </div>
+            </div>
+        </Card>
+    );
+}

@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 const Footer: React.FC<{contactData: any}> = ({ contactData }) => {
     return (
-        <div className='mb-3 px-3 p-1 flex flex-row justify-stretch border-t-[1px] border-themecolor lg:mx-7 lg:p-1 lg:pr-10'>
-            <div className='w-1/3 h-[initial]'>
+        <div className='mb-3 px-3 p-1 flex flex-row justify-between sm:justify-stretch border-t-[1px] border-themecolor lg:mx-7 lg:p-1 lg:pr-10'>
+            <div className='w-fit sm:w-1/3 h-[initial]'>
                 <ul className='h-full flex flex-col justify-evenly'>
                     <motion.a
                         className='m-1 text-sm md:text-md tracking-wider'
@@ -29,7 +29,7 @@ const Footer: React.FC<{contactData: any}> = ({ contactData }) => {
                     >{contactData.location}</motion.span>
                 </ul>
             </div>
-            <div className='w-1/3 h-[initial] justify-items-center self-center'>
+            <div className='w-fit sm:w-1/3 h-[initial] justify-items-center self-center'>
                 <div className='w-max flex flex-col justify-evenly'>
                     {contactData.resumes.map((resume: any, index: number) => (
                         <motion.a
@@ -51,7 +51,7 @@ const Footer: React.FC<{contactData: any}> = ({ contactData }) => {
                     ))}
                 </div>
             </div>
-            <div className='w-1/3 h-[initial] flex self-center justify-end'>
+            <div className='w-fit sm:w-1/3 h-[initial] flex self-center justify-end'>
                 <div className='w-max flex flex-col justify-evenly'>
                     {contactData.socials.map((social: any, index: number) => (
                         <motion.a
