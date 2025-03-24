@@ -16,7 +16,7 @@ export const MyChip: React.FC<{ skill: string, index: number}> = ({skill, index}
     );
 };
 
-export const SkillChip: React.FC<{ skill: string, skilltype: string, index: number }> = ({skill, skilltype, index}) => {
+export const SkillChip: React.FC<{ skill: string, skilltype: string, index: number, fontSize: string }> = ({skill, skilltype, index, fontSize}) => {
     const [isOpen, setIsOpen] = React.useState(false);
 
     const handleOpen = () => {
@@ -38,10 +38,14 @@ export const SkillChip: React.FC<{ skill: string, skilltype: string, index: numb
             onPanEnd={handleClose}
         >
             {skillIconMap[skill.toLowerCase()] ? 
-                <span className='text-3xl text-themecolor'>
+                <span className='text-themecolor' style={{
+                    fontSize: fontSize
+                }}>
                     {skillIconMap[skill.toLowerCase()]}
                 </span> : 
-                <span className='text-3xl text-themecolor'>
+                <span className='text-themecolor' style={{
+                    fontSize: fontSize
+                }}>
                     {skillIconMap[skilltype.toLowerCase()]}
                 </span>
             }

@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import { iconMap } from '@/lib/data';
 
 const Footer: React.FC<{contactData: any}> = ({ contactData }) => {
     return (
@@ -69,7 +70,7 @@ const Footer: React.FC<{contactData: any}> = ({ contactData }) => {
                             }}
                             key={index} href={social.url}
                         >
-                            {social.icon}
+                            {iconMap[social.name.toLowerCase()]}
                         </motion.a>
                     ))}
                 </div>

@@ -20,7 +20,7 @@ export interface ExperienceCardItem {
     location: string;
     description: string;
     content: string[];
-    skills: string[];
+    skill: SkillTypeItem[];
     profiles: string[];
     image: string;
     date: string;
@@ -43,7 +43,7 @@ export interface ProjectCardItem {
     links: Link[];
     description: string;
     content: string[];
-    tags: string[];
+    skill: SkillTypeItem[];
     image: string;
 }
 

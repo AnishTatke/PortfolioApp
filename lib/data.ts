@@ -1,5 +1,5 @@
 import React from "react";
-import { ExperienceCardItem, EducationCardItem, SkillTypeItem } from "./interfaces";
+import { ExperienceCardItem, EducationCardItem, SkillTypeItem, ProjectCardItem } from "./interfaces";
 
 import {
   FaGithub,
@@ -17,7 +17,10 @@ import {
   FaDocker,
   FaGitAlt,
   FaLaptopCode,
-  FaUnity
+  FaUnity,
+  FaAws,
+  FaBootstrap,
+  FaFigma
 } from "react-icons/fa";
 import { 
   IoLogoJavascript
@@ -63,7 +66,7 @@ import {
   SiNvidia,
   SiOpencv,
   SiSpacy,
-  SiHuggingface
+  SiHuggingface,
 } from "react-icons/si";
 import { 
   DiRedis,
@@ -124,7 +127,33 @@ export const experiencesData: ExperienceCardItem[] = [
       "Fabricated an innovative video game in Unity controlled by prosthetic devices for rehabilitation of amputee patients"
     ],
     profiles: [],
-    skills: ["Angular JS", "SQL" ,"Unity", "C#", "AWS", "MQTT"],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["C#", "Angular.JS"],
+      },
+      {
+        title: "Databases",
+        type: "database",
+        skills: ["SQL"],
+      },
+      {
+        title: "Cloud Technologies",
+        type: "cloud",
+        skills: ["AWS"],
+      },
+      {
+        title: "Frameworks",
+        type: "framework",
+        skills: ["MQTT"],
+      },
+      {
+        title: "Software",
+        type: "software",
+        skills: ["Unity"],
+      }
+    ],
     image: "url",
     date: "Feb 2020 - May 2020",
   },
@@ -145,7 +174,28 @@ export const experiencesData: ExperienceCardItem[] = [
       "Earned Google Cloud Associate Cloud Engineer (ACE) Certification, enhancing expertise in cloud development and deployments, contributing to the successful delivery of multiple applications on GCP."
     ],
     profiles: ["Framework Engineer"],
-    skills: ["React.JS", "Next.JS", "Node.JS", "MongoDB", "SQL", "PostgreSQL", "App-Engine", "Kubernetes", "Big Query"],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["JavaScript", "TypeScript"],
+      },
+      {
+        title: "Databases",
+        type: "database",
+        skills: ["MongoDB", "SQL", "PostgreSQL"],
+      },
+      {
+        title: "Cloud Technologies",
+        type: "cloud",
+        skills: ["App-Engine", "Kubernetes", "Big Query"],
+      },
+      {
+        title: "Web Development",
+        type: "webdev",
+        skills: ["React.JS", "Next.JS", "Node.JS"],
+      },
+    ],
     image: "url",
     date: "June 2021 - June 2023",
   },
@@ -161,7 +211,24 @@ export const experiencesData: ExperienceCardItem[] = [
       "Deployed complete AI pipelines as Docker plugins on cloud platforms for inference",
     ],
     profiles: [],
-    skills: ["Python", "Tensorflow", "PyTorch", "OpenCV", "Docker", "Deep Learning", "Image Processing"],
+    // skills: ["Python", "Tensorflow", "PyTorch", "OpenCV", "Docker", "Deep Learning", "Image Processing"],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["Tensorflow", "PyTorch", "CUDA", "OpenCV", "numpy", "Scikit-Learn",  "Pandas"],
+      },
+      {
+        title: "Frameworks",
+        type: "framework",
+        skills: ["Docker", "Git"],
+      },
+    ],
     image: "url",
     date: "August 2024 - Present",
   }
@@ -194,7 +261,7 @@ export const educationsData: EducationCardItem[] = [
   }
 ] 
 
-export const projectsData = [
+export const projectsData: ProjectCardItem[] = [
   {
     title: "EenthPathar",
     links: [
@@ -210,7 +277,28 @@ export const projectsData = [
       "Designed Figma frames for a commercial real estate website, implemented in React-Bootstrap with Material UI for layout elements, seamless navigation and data display.",
       "Programmed a Node.JS backend with REST-API to manage data interactions with Firestore database, and integrated Firebase authentication to ensure secure user access."
     ],
-    tags: ["React.JS", "Node.JS", "Firebase", "Firestore", "Bootstrap", "Figma"],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["JavaScript", "TypeScript", "Bootstrap"],
+      },
+      {
+        title: "Databases",
+        type: "database",
+        skills: ["Firestore"],
+      },
+      {
+        title: "Web Development",
+        type: "webdev",
+        skills: ["React.JS", "Node.JS"],
+      },
+      {
+        title: "Cloud Technologies",
+        type: "cloud",
+        skills: ["Firebase", "Figma"],
+      }
+    ],
     image: "",
   },
   {
@@ -234,7 +322,29 @@ export const projectsData = [
       "Built a cross-platform mobile application with Flutter SDK, featuring pre-loaded Tensorflow Lite-optimized models. Conducted optimizations to reduce latency by 30% and file size by 45%.",
       "Published a paper in an IEEE journal that analyzes the performance of the models."
     ],
-    tags: ["Python", "Tensorflow", "Flutter", "Dart", "Firebase"],
+    // tags: ["Python", "Tensorflow", "Flutter", "Dart", "Firebase"],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python", "Dart"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["Tensorflow", "OpenCV"],
+      },
+      {
+        title: "Web Development",
+        type: "webdev",
+        skills: ["Flutter"],
+      },
+      {
+        title: "Cloud Technologies",
+        type: "cloud",
+        skills: ["Firebase"],
+      }
+    ],
     image: "1VNS1H5l6QnAr5i5ztDrZf-TErqVHelI9"
   },
   {
@@ -254,7 +364,19 @@ export const projectsData = [
       "Architectured a binary classification model using Convolutional Neural Networks (CNNs) for distinguishing between Progressive and Non-Progressive Rock snippets,  achieving a validation accuracy of about 74% - 75%.",
       "Implemented models such as Simple Voting classifiers, RNNs, and LSTM networks for making predictions over songs(all snippets combined) achieving validation accuracy of about 85% - 86%."
     ],
-    tags: ["Python", "PyTorch", "Librosa", "Pandas", "Numpy", "Matplotlib", "Scikit-learn"],
+    // tags: ["Python", "PyTorch", "Librosa", "Pandas", "Numpy", "Matplotlib", "Scikit-learn"],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["PyTorch", "numpy", "Scikit-Learn", "Pandas"],
+      },
+    ],
     image: "1CXJ2yK2noV1KZpRdku-vZQjqvUT8bnZE",
   },
   {
@@ -274,7 +396,29 @@ export const projectsData = [
       "Build feature to generate quizzes and flashcards, with dynamic difficulty levels and adaptive scoring mechanism.",
       "We also provided voice assistance features, adding inclusivity and accessibility to the app."
     ],
-    tags: ["React.JS", "Flask", "OpenAI", "Python", "Flask", "ChromaDB"],
+    // tags: ["React.JS", "Flask", "OpenAI", "Python", "Flask", "ChromaDB"],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["OpenAI"],
+      },
+      {
+        title: "Web Development",
+        type: "webdev",
+        skills: ["React.JS", "Flask"],
+      },
+      {
+        title: "Databases",
+        type: "database",
+        skills: ["ChromaDB"],
+      }
+    ],
     image: "18Nj48OkRIsaNb2z814WyXDmzWexclCjE",
   }
 ] as const;
@@ -319,6 +463,7 @@ export const skillsData: SkillTypeItem[] = [
 
 
 export const skillIconMap: {[key: string]: any} = {
+  // Broader Skills
   "programming language": React.createElement(Programming),
   "database": React.createElement(FaDatabase),
   "mlai": React.createElement(AIML),
@@ -326,6 +471,7 @@ export const skillIconMap: {[key: string]: any} = {
   "cloud": React.createElement(TbCloudCode),
   "webdev": React.createElement(FaCode),
   "software": React.createElement(FaLaptopCode),
+  // Programming Languages
   "python": React.createElement(FaPython),
   "javascript": React.createElement(IoLogoJavascript),
   "typescript": React.createElement(SiTypescript),
@@ -334,15 +480,15 @@ export const skillIconMap: {[key: string]: any} = {
   "c": React.createElement(FaC),
   "c++": React.createElement(SiCplusplus),
   "php": React.createElement(FaPhp),
-
   "dart": React.createElement(SiDart),
+  // Databases
   "postgresql": React.createElement(SiPostgresql),
   "mongodb": React.createElement(SiMongodb),
   "sql": React.createElement(TbSql),
   "redis": React.createElement(DiRedis),
   "pinecone": React.createElement(Pinecone),
   "faiss": React.createElement(FaMeta),
-
+  // Web Development
   "html": React.createElement(FaHtml5),
   "css": React.createElement(DiCss3),
   "react.js": React.createElement(FaReact),
@@ -357,7 +503,8 @@ export const skillIconMap: {[key: string]: any} = {
   "tailwind": React.createElement(RiTailwindCssFill),
   "ionic": React.createElement(SiIonic),
   "flutter": React.createElement(SiFlutter),
-
+  "bootstrap": React.createElement(FaBootstrap),
+  // Machine Learning/AI
   "pytorch": React.createElement(SiPytorch),
   "tensorflow": React.createElement(SiTensorflow),
   "langchain": React.createElement(SiLangchain),
@@ -371,20 +518,28 @@ export const skillIconMap: {[key: string]: any} = {
   "spacy": React.createElement(SiSpacy),
   "transformers": React.createElement(SiHuggingface),
   "openai": React.createElement(SiOpenai),
-
+  // Frameworks
   "git": React.createElement(FaGitAlt),
   "hadoop": React.createElement(SiApachehadoop),
   "tableau": React.createElement(SiTableau),
   "airflow": React.createElement(SiApacheairflow),
   "spark": React.createElement(SiApachespark),
-
+  // Cloud
   "google cloud platform": React.createElement(SiGooglecloud),
   "kubernetes": React.createElement(SiKubernetes),
   "bigquery": React.createElement(SiGooglebigquery),
   "docker": React.createElement(FaDocker),
-
+  "aws": React.createElement(FaAws),
+  // Softwares
   "unity": React.createElement(FaUnity),
   "android studios": React.createElement(SiAndroidstudio),
+  "figma": React.createElement(FaFigma),
+}
+
+export const iconMap: {[key: string]: any} = {
+  'github': React.createElement(FaGithub),
+  'linkedin': React.createElement(FaLinkedin),
+  'twitter': React.createElement(FaXTwitter)
 }
 
 export const contactData = {
@@ -405,17 +560,14 @@ export const contactData = {
     {
       name: "Github",
       url: "https://github.com/AnishTatke",
-      icon: React.createElement(FaGithub),
     },
     {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/tatke-anish/",
-      icon: React.createElement(FaLinkedin),
     },
     {
       name: "Twitter",
       url: "https://twitter.com/Nerdyappa",
-      icon: React.createElement(FaXTwitter),
     },
   ],
 } as const;

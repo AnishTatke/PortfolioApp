@@ -89,7 +89,7 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                                 </ul>
                             </motion.div>
                         }
-                    {isExpanded && experience.skills.length > 0 &&
+                    {isExpanded && experience.skill.length > 0 &&
                         <motion.div 
                             variants={faultVariant}
                             initial='initial'
@@ -98,8 +98,16 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                         >
                             <h2>Skills</h2>
                             <div className='mr-2 flex flex-row justify-start flex-wrap'>
-                                {experience.skills.map((skill, index) => (
-                                    <MyChip skill={skill} index={index} key={index}/>
+                                {experience.skill.map((skilltype, index) => (
+                                    skilltype.skills.map((skill, index) => (
+                                        <SkillChip 
+                                            skill={skill} 
+                                            skilltype={skilltype.type} 
+                                            index={index} 
+                                            key={index}
+                                            fontSize='24px'
+                                        />
+                                    ))
                                 ))}
                             </div>
                         </motion.div>
@@ -112,12 +120,15 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                             <h1 className='text-lg font-semibold tracking-wider text-themecolor'>{experience.title}</h1>
                         </div>
                         <div className='w-full flex flex-row justify-between'>
-                            <motion.a
-                                href={experience.url}
-                                className='w-fit'
-                                initial={{color: '#ffffff'}}
-                                whileTap={{color: '#fb923c'}}
-                            >{experience.company}</motion.a>
+                            {isExpanded ?
+                                <motion.a
+                                    href={experience.url}
+                                    className='w-fit'
+                                    initial={{color: '#ffffff'}}
+                                    whileTap={{color: '#fb923c'}}
+                                >{experience.company}</motion.a> : 
+                                <span className='w-fit'>{experience.company}</span>
+                            }
                             {isExpanded && <h1 className='hidden xl:block'>{experience.location}</h1>}
                         </div>
                         {isExpanded && <h1 className='block xl:hidden'>{experience.location}</h1>}
@@ -154,14 +165,17 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                 <div className='w-full flex flex-row justify-start md:justify-around'>
                     <div className='w-full sm:w-1/2 flex flex-col justify-between'>
                         <h1 className='text-lg font-semibold tracking-wider text-themecolor md:text-nowrap'>{experience.title}</h1>
-                        <motion.a
-                            className='w-fit' 
-                            href={experience.url}
-                            initial={{color: '#ffffff'}}
-                            whileFocus={{color: '#fb923c'}}
-                        >
-                            {experience.company}
-                        </motion.a>
+                        {isExpanded ? 
+                            <motion.a
+                                className='w-fit touch-none' 
+                                href={experience.url}
+                                initial={{color: '#ffffff'}}
+                                whileTap={{color: '#fb923c'}}
+                            >
+                                {experience.company}
+                            </motion.a> : 
+                            <span className='w-fit'>{experience.company}</span>
+                        }
                         <div className='w-full flex sm:hidden flex-row justify-between'>
                             <DateRange date={experience.date} isExpanded={isExpanded} />
                             {experience.location && <h1 className='w-fit self-end'>{experience.location}</h1>}
@@ -199,12 +213,19 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                     </div>
                 }
 
-                {isExpanded && experience.skills.length > 0 &&
-                    <div className='w-full flex flex-col justify-start'>
-                        <h2>Skills</h2>
+                {isExpanded && experience.skill.length > 0 &&
+                    <div className='mt-2 w-full flex flex-col justify-start'>
                         <div className='mr-2 flex flex-row justify-start flex-wrap'>
-                            {experience.skills.map((skill, index) => (
-                                <MyChip skill={skill} index={index} key={index}/>
+                            {experience.skill.map((skilltype, index) => (
+                                skilltype.skills.map((skill, index) => (
+                                    <SkillChip 
+                                        skill={skill} 
+                                        skilltype={skilltype.type} 
+                                        index={index} 
+                                        key={index}
+                                        fontSize='24px'
+                                    />
+                                ))
                             ))}
                         </div>
                     </div>
@@ -310,12 +331,43 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                 </div>
                 <VerticalDivider isExpanded={isExpanded}/>
                 <div className='w-auto px-3 flex flex-col justify-start'>
-                    <h1 className='font-semibold text-lg tracking-wider text-themecolor'>{project.title}</h1>
+                    <div className='flex flex-row justify-between'>
+                        <h1 className='font-semibold text-lg tracking-wider text-themecolor'>{project.title}</h1>
+                        {isExpanded && project.links.length > 0 && <div 
+                                className='px-2 flex flex-row justify-start w-fit'
+                            >
+                                {project.links.map((link, index) => (
+                                    <motion.a 
+                                        key={index} 
+                                        href={link.url} 
+                                        className='mr-5 text-3xl'
+                                        initial={{
+                                            scale: 1,
+                                            color: '#ffffff'
+                                        }}
+                                        whileHover={{
+                                            scale: 1.2,
+                                            color: '#fb923c'
+                                        }}
+                                    >
+                                        {link.icon}
+                                    </motion.a>
+                                ))}
+                        </div>}
+                    </div>
 
                     <div className='pt-2 font-semi flex flex-row flex-wrap'>
-                        <h1 className='text-md mr-2'>Skills:</h1>
-                        {project.tags.map((tag, index) => (
-                            <MyChip skill={tag} index={index} key={index}/>
+                        <h1 className='text-md mr-2 self-center'>Skills:</h1>
+                        {project.skill.map((skilltype, index) => (
+                            skilltype.skills.map((skill, index) => (
+                                <SkillChip 
+                                    skill={skill} 
+                                    skilltype={skilltype.type} 
+                                    index={index} 
+                                    key={index}
+                                    fontSize='24px'
+                                />
+                            ))
                         ))}
                     </div>
 
@@ -336,7 +388,7 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                         }
                     </div>
 
-                    {isExpanded && project.links.length > 0 && <div 
+                    {/* {isExpanded && project.links.length > 0 && <div 
                         className='my-2 p-2 flex flex-row justify-start w-fit'
                     >
                         {project.links.map((link, index) => (
@@ -356,7 +408,7 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                                 {link.icon}
                             </motion.a>
                         ))}
-                    </div>}
+                    </div>} */}
                 </div>
             </div>
 
@@ -374,7 +426,30 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                     />
                 </div>
 
-                <h1 className='pr-2 font-semibold text-lg text-themecolor tracking-wider md:text-nowrap'>{project.title}</h1>
+                <div className='pt-2 flex flex-row justify-between'>
+                    <h1 className='pr-2 font-semibold text-lg text-themecolor tracking-wider md:text-nowrap'>{project.title}</h1>
+                    {isExpanded && project.links.length > 0 && <div 
+                            className='px-1 flex flex-row justify-start w-fit'
+                        >
+                            {project.links.map((link, index) => (
+                                <motion.a 
+                                    key={index}
+                                    href={link.url} 
+                                    className='mr-5 text-3xl'
+                                    initial={{
+                                        scale: 1,
+                                        color: '#ffffff'
+                                    }}
+                                    whileTap={{
+                                        scale: 1.2,
+                                        color: '#fb923c'
+                                    }}
+                                >
+                                    {link.icon}
+                                </motion.a>
+                            ))}
+                    </div>}
+                </div>
                 <div className='my-2'>
                     <p className='text-sm'>{project.description}</p>
                     {isExpanded && project.content.length > 0 &&
@@ -392,11 +467,20 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                     }
                 </div>
                 <div className='mb-2 flex flex-row justify-start flex-wrap'>
-                    {project.tags.map((tag, index) => (
-                        <MyChip skill={tag} index={index} key={index}/>
+                    
+                    {project.skill.map((skilltype, index) => (
+                        skilltype.skills.map((skill, index) => (
+                            <SkillChip 
+                                skill={skill} 
+                                skilltype={skilltype.type} 
+                                index={index} 
+                                key={index}
+                                fontSize='24px'
+                            />
+                        ))
                     ))}
                 </div>
-                {isExpanded && project.links.length > 0 && <div 
+                {/* {isExpanded && project.links.length > 0 && <div 
                         className='px-2 pt-2 flex flex-row justify-start w-fit'
                     >
                         {project.links.map((link, index) => (
@@ -416,7 +500,7 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                                 {link.icon}
                             </motion.a>
                         ))}
-                </div>}
+                </div>} */}
             </div>
         </Card>
     );
@@ -430,7 +514,13 @@ export const SkillTypeCard: React.FC<{ skilltype: SkillTypeItem }> = ({ skilltyp
                 <h1 className='py-[1px] text-lg font-semibold'>{skilltype.title}</h1>
                 <div className='flex flex-row flex-wrap justify-start'>
                     {skilltype.skills.map((skill, index) => (
-                        <SkillChip skill={skill} index={index} skilltype={skilltype.type} key={index}/>
+                        <SkillChip 
+                            skill={skill} 
+                            index={index} 
+                            skilltype={skilltype.type} 
+                            key={index}
+                            fontSize='30px'    
+                        />
                     ))}
                 </div>
             </div>
