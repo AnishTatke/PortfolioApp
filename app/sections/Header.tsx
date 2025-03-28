@@ -5,10 +5,10 @@ import Logo from '@/app/assets/logo_with_hex.png';
 import { motion } from 'framer-motion';
 
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
     return (
         <>
-            <div className='hidden lg:block z-50 h-[200px] sticky w-screen top-0 left-0 bg-gradient-to-b from-bboard from-30% via-bboard/50 via-70%'>
+            <div className='hidden lg:block z-30 h-[200px] sticky w-screen top-0 left-0 bg-gradient-to-b from-bboard from-30% via-bboard/50 via-70%'>
                 <MotionComponent
                     src={Logo}
                     alt='Logo'
@@ -19,7 +19,7 @@ const Header: React.FC = () => {
                     animate={{ opacity: 1 }}
                 />
             </div>
-            <div className='block lg:hidden z-50 h-[150px] sticky top-0 w-full bg-gradient-to-b from-bboard from-30% via-bboard/50 via-70%'>
+            <div className='block lg:hidden z-30 h-[150px] sticky top-0 w-full bg-gradient-to-b from-bboard from-30% via-bboard/50 via-70%'>
                 <MotionComponent
                     src={Logo}
                     alt='Logo'
@@ -40,6 +40,4 @@ const ExoticImage = forwardRef<HTMLImageElement, ImageProps>(
     }
   );
   
-const MotionComponent = motion(ExoticImage)
-
-export default Header;
+export const MotionComponent = motion(ExoticImage);

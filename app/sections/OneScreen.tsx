@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import { Header } from './Header';
 import MyIntro from './MyIntro';
 import Intro from './Intro';
 import Education from './Education';

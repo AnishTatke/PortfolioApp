@@ -58,3 +58,8 @@ export interface FormObject {
     email: string;
     message: string;
 }
+
+export interface Message {
+    text: string;
+    sender: 'user' | 'bot';
+}

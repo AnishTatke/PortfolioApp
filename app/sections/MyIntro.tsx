@@ -33,8 +33,8 @@ const MyIntro: React.FC = () => {
                 <Image
                     as={NextImage}
                     layout='responsive'
-                    width={250}
-                    height={200}
+                    width={240}
+                    height={180}
                     src={Pic.src}
                     alt="My Photo"
                     className='relative rounded-full w-60 h-60'
