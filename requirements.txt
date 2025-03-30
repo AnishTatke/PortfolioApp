@@ -1,4 +1,6 @@
 fastapi
+hypercorn
+uvicorn
 faiss-cpu
 pydantic
 pdfplumber
