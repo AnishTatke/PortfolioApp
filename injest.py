@@ -2,6 +2,7 @@ import os
 import re
 import dotenv
 import pdfplumber
+import requests
 
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -49,12 +50,32 @@ def chunk_by_section(text):
     chunks = [s.strip() for s in sections if s.strip()]  # Clean empty values
     return chunks
 
-def main(path):
+def download_file_from_google_drive(file_id, destination = "data/resume_content.pdf"):
+    url = f"https://drive.google.com/uc?id={file_id}&export=download"
+    response = requests.get(url, stream=True)
+    if response.status_code == 200:
+        with open(destination, "wb") as file:
+            for chunk in response.iter_content(chunk_size=1024):
+                if chunk:
+                    file.write(chunk)
+        print(f"File downloaded successfully to {destination}")
+        return destination
+    else:
+        raise Exception(f"Failed to download file. Status code: {response.status_code}")
+
+
+def main():
+    dotenv.load_dotenv()
+    # Load environment variables
+    file_id = os.getenv("FILE_ID")
+    if not file_id:
+        raise ValueError("FILE_ID environment variable not set")
+    
+    path = download_file_from_google_drive(file_id)
     if not path or not os.path.exists(path):
         raise FileNotFoundError("File not found or invalid path")
     
     # Load environment variables
-    dotenv.load_dotenv()
 
     print("Loading resume content...")
     text = extract_all_text(path)
@@ -66,5 +87,4 @@ def main(path):
     db.save_local("data/resume_db")
 
 if __name__ == "__main__":
-    path = "data/resume_content.pdf"
-    main(path=path)
+    main()
