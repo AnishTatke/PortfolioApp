@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
     steps:
-      - name: Debug - Print github.event object
+      - name: Debug - Print folder contents
         run: |
-          echo "github.event context:"
-          echo '${{ toJSON(github.event) }}'
+          echo "The working folder contains: "
+          ls
           
       # Only run if this is a production environment deployment that succeeded
       - name: Run post-deploy actions
