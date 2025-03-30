@@ -1,6 +1,9 @@
 name: Post-Deployment Actions
 
 on:
+  push:
+    branches:
+      - backend
   deployment_status:
     states: [success]
 
@@ -12,7 +15,7 @@ jobs:
       - name: Debug - Print folder contents
         run: |
           echo "The working folder contains: "
-          ls
+          echo $(ls)
           
       # Only run if this is a production environment deployment that succeeded
       - name: Run post-deploy actions
