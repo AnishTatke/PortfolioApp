@@ -1,6 +1,6 @@
 # Portfolio Backend
 
-This is a backend application built using **FastAPI** to support a portfolio website. It provides APIs for managing portfolio data such as projects, skills, and contact information.
+This is a backend application built using **FastAPI** to support a portfolio website. It provides APIs for managing portfolio data such as projects, skills, and contact information. Primarily being used for generating retrieval augmented generation(RAG) on resume content.
 
 ## Features
 
@@ -19,8 +19,8 @@ This is a backend application built using **FastAPI** to support a portfolio web
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/portfolio-backend.git
-    cd portfolio-backend
+    git clone https://github.com/AnishTatke/backend.git
+    cd backend
     ```
 
 2. Create and activate a virtual environment:
@@ -34,7 +34,7 @@ This is a backend application built using **FastAPI** to support a portfolio web
     pip install -r requirements.txt
     ```
 
-## Running the Application
+## Running the Application Locally
 
 Start the development server:
 ```bash
@@ -54,14 +54,12 @@ FastAPI automatically generates interactive API documentation:
 
 ```
 portfolio-backend/
-├── app/
-│   ├── main.py          # Entry point of the application
-│   ├── models/          # Database models
-│   ├── routers/         # API routes
-│   ├── schemas/         # Pydantic models
-│   └── services/        # Business logic
+├── pipelines/
+│   ├── rag.py           # Retreives and generated answers
 ├── tests/               # Unit and integration tests
 ├── requirements.txt     # Python dependencies
+├── inject.py            # This script run the injestion and indexing into vector DB(FAISS)
+├── main.py              # This is the main app entry point where all routes are defined
 └── README.md            # Project documentation
 ```
 
