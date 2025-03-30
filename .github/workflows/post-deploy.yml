@@ -22,4 +22,4 @@ jobs:
         if: github.event.deployment.environment == 'production'
         run: |
           echo "Production deployment succeeded"
-          python injest.py
+          cd .. && python injest.py
