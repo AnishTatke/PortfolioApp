@@ -1,5 +1,5 @@
 fastapi
-faiss
+faiss-cpu
 pydantic
 pdfplumber
 langchain
