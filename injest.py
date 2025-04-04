@@ -65,17 +65,24 @@ def download_file_from_google_drive(file_id, destination = "data/resume_content.
 
 
 def main():
+    # Load environment variables from .env file
+    dotenv.load_dotenv()
+
+    # Print environment variables for debugging
     print(dict(os.environ))
+
     # Load environment variables
     file_id = os.getenv("FILE_ID")
     if not file_id:
         raise ValueError("FILE_ID environment variable not set")
     
+    model_name = os.getenv("EMBEDDING_CHECKPOINT")
+    if not model_name:
+        raise ValueError("EMBEDDING_CHECKPOINT environment variable not set")
+    
     path = download_file_from_google_drive(file_id)
     if not path or not os.path.exists(path):
         raise FileNotFoundError("File not found or invalid path")
-    
-    # Load environment variables
 
     print("Loading resume content...")
     text = extract_all_text(path)
@@ -83,7 +90,7 @@ def main():
     sections = chunk_by_section(text)
 
     print("Initialize DB")
-    db = FAISS.from_texts(sections, HuggingFaceEmbeddings(model_name=os.getenv("EMBEDDING_CHECKPOINT")))
+    db = FAISS.from_texts(sections, HuggingFaceEmbeddings(model_name=model_name))
     db.save_local("data/resume_db")
     print("DB saved successfully")
 
