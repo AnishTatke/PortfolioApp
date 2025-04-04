@@ -65,7 +65,7 @@ def download_file_from_google_drive(file_id, destination = "data/resume_content.
 
 
 def main():
-    dotenv.load_dotenv()
+    print(dict(os.environ))
     # Load environment variables
     file_id = os.getenv("FILE_ID")
     if not file_id:
@@ -85,6 +85,7 @@ def main():
     print("Initialize DB")
     db = FAISS.from_texts(sections, HuggingFaceEmbeddings(model_name=os.getenv("EMBEDDING_CHECKPOINT")))
     db.save_local("data/resume_db")
+    print("DB saved successfully")
 
 if __name__ == "__main__":
     main()
