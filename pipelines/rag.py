@@ -3,20 +3,18 @@ import re
 import dotenv
 import pdfplumber
 
+from injest import injest
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_groq import ChatGroq
 from langchain_core.prompts import (
     ChatPromptTemplate, 
-    MessagesPlaceholder
 )
 
 TASK_PROMPT = """
 Give correct answers to all the questions asked to you as the given PERSONA with respect to the given CONTEXT. 
 Answer every questions professionally and honestly. Treat all the questions asked to you as interview questions.
 """
-
-# Refer to the SUMMARY of the previous conversation as well as the HISTORY of the most recent messages while answering the question.
 
 RESTRICTION_PROMPT = """
 RULES AND RESTRICTIONS:
@@ -103,7 +101,8 @@ def get_answer(query: str):
         raise ValueError("Query cannot be empty.")
     
     if not os.path.exists("data/resume_db"):
-        raise FileNotFoundError("Database not found. Please run the indexing script first.")
+        print("Database not found. Running the indexing script first.")
+        injest()
     
     db = FAISS.load_local("data/resume_db", HuggingFaceEmbeddings(model_name=embedding_checkpoint), allow_dangerous_deserialization=True)
     chat = ChatGroq(
@@ -115,7 +114,6 @@ def get_answer(query: str):
     prompt = ChatPromptTemplate(
         messages=[
             ("system", start_system_message),
-            MessagesPlaceholder(variable_name="history", optional=True),
             ("user", "{query}")
         ],
     )

@@ -51,6 +51,10 @@ def chunk_by_section(text):
     return chunks
 
 def download_file_from_google_drive(file_id, destination = "data/resume_content.pdf"):
+    if os.path.exists(destination):
+        print(f"File already exists at {destination}. Skipping download.")
+        return destination
+    
     url = f"https://drive.google.com/uc?id={file_id}&export=download"
     response = requests.get(url, stream=True)
     if response.status_code == 200:
@@ -61,7 +65,7 @@ def download_file_from_google_drive(file_id, destination = "data/resume_content.
         print(f"File downloaded successfully to {destination}")
         return destination
     else:
-        raise Exception(f"Failed to download file. Status code: {response.status_code}")
+        print("Failed to download file. Status code: {response.status_code}")
     
 def injest():
     # Create data directory if it doesn't exist
