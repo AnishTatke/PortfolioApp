@@ -62,12 +62,8 @@ def download_file_from_google_drive(file_id, destination = "data/resume_content.
         return destination
     else:
         raise Exception(f"Failed to download file. Status code: {response.status_code}")
-
-
-def main():
-    # Load environment variables from .env file
-    dotenv.load_dotenv()
     
+def injest():
     # Create data directory if it doesn't exist
     os.makedirs("data", exist_ok=True)
 
@@ -94,5 +90,14 @@ def main():
     db.save_local("data/resume_db")
     print("DB saved successfully at data/resume_db")
 
+
 if __name__ == "__main__":
-    main()
+    print("Current working directory:", os.getcwd())
+    print("Directory contents:", os.listdir("."))
+    
+    dotenv.load_dotenv()
+    if not os.path.exists("data/resume_db"):
+        print("Indexing resume content...")
+        injest()
+    else:
+        print("Resume DB already exists. Skipping indexing.")

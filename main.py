@@ -23,7 +23,13 @@ def root():
 @app.post("/chat")
 async def chat(message: Message):
     from pipelines.rag import get_answer
-    if message.sender == 'user':
-        answer = get_answer(message.text)
-        # return Message(text=f"You said: {message.text}", sender='bot')
-        return Message(text=answer.content, sender='bot')
+    try:
+        if message.sender == 'user':
+            answer = get_answer(message.text)
+            # return Message(text=f"You said: {message.text}", sender='bot')
+            return Message(text=answer.content, sender='bot')
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    
