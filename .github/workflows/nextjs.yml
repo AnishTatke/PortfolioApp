@@ -16,6 +16,7 @@ env:
   EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
   EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
   EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+  FAST_API_URL: ${{ secrets.FAST_API_URL }}
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:

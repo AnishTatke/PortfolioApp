@@ -8,7 +8,7 @@ import { getGDriveImageLink } from '@/lib/services';
 import NextImage from 'next/image';
 import { Image } from "@nextui-org/react";
 import { RiRobot3Line, RiUser3Fill } from "react-icons/ri";
-import VerticalDivider from '@/app/components/VerticalDivider';
+import { LoadingDots, VerticalDivider } from '@/app/components/Animations';
 
 const DateRange: React.FC<{ date: string, isExpanded: boolean }> = ({ date, isExpanded }) => {
     const [startDate, endDate] = date.split('-').map(date => date.trim());
@@ -535,17 +535,23 @@ export const MessageCard: React.FC<{ index: number, msg: Message }> = ({ index, 
     return (
         <div
             key={index}
-            className={`p-2 mb-4 max-w-lg h-auto flex items-start rounded-md bg-themeopacque text-white ${msg.sender === "user" ? "self-end ml-auto" : ""
+            className={`p-2 mb-4 max-w-[600px] h-auto flex items-start rounded-md bg-themeopacque text-white ${msg.sender === "user" ? "w-fit self-end ml-auto" : ""
                 }`}
         >
             <div className="flex-shrink-0">
                 {msg.sender === "bot" ? (
-                    <RiRobot3Line className="w-6 h-6 text-themecolor" />
+                    <RiRobot3Line className={`w-6 h-6 ${msg.status == "error" ? "text-themeerror" : "text-themecolor"}`} />
                 ) : (
                     <RiUser3Fill className="w-6 h-6 text-themecolor" />
                 )}
             </div>
-            <p className="ml-2 flex-1 break-words">{msg.text}</p>
+            {msg.status == "generating" ? (
+                <LoadingDots />
+            ) : msg.status == "error" ? (
+                <p className="ml-2 flex-1 break-words">{msg.text}</p>
+            ) : (
+                <p className="ml-2 flex-1 break-words">{msg.text}</p>
+            )}
         </div>
     )
 }

@@ -62,4 +62,5 @@ export interface FormObject {
 export interface Message {
     text: string;
     sender: 'user' | 'bot';
+    status?: 'generating' | 'completed' | 'error';
 }

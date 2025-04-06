@@ -13,7 +13,8 @@ const config: Config = {
         bboard: '#1A1918',
         themecolor: '#fb923c',
         themeopacque: '#ac896830',
-        themetransparent: '#ac896805'
+        themetransparent: '#ac896805',
+        themeerror: '#85664d'
       },
     },
   },

@@ -4,14 +4,17 @@ import { motion } from "framer-motion";
 import Logo from '@/app/assets/logo_with_hex.png';
 import { MotionComponent } from "../sections/Header";
 import { IoClose, IoSendOutline } from "react-icons/io5";
+import { FaPlus } from "react-icons/fa";
 import { RiChatSmileAiLine } from "react-icons/ri";
 import { Message } from "@/lib/interfaces";
 import { MessageCard } from "./Cards";
+import { logoVariant } from "../variants";
 
 const SlidingPanel: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
+  const FAST_API_URL = process.env.NEXT_PUBLIC_FAST_API_URL;
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,11 +28,17 @@ const SlidingPanel: React.FC = () => {
       sender: "user",
       text: input,
     };
-    setMessages((prev) => [...prev, userMessage]);
+    const botMessage: Message = {
+      sender: "bot",
+      text: "",
+      status: "generating"
+    };
+
+    setMessages((prev) => [...prev, userMessage, botMessage]);
     setInput("");
 
-    try{
-      const res = await fetch("http://127.0.0.1:8000/chat", {
+    try {
+      const res = await fetch(`${FAST_API_URL}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,16 +47,30 @@ const SlidingPanel: React.FC = () => {
       });
 
       const data = await res.json();
-      const botMessage: Message = {
-        sender: data.sender,
-        text: data.text,
-      };
-
-      setMessages((prev) => [...prev, botMessage]);
+      if (!res.ok) {
+        botMessage.text = data.detail;
+        botMessage.status = "error";
+      } else {
+        botMessage.sender = data.sender;
+        botMessage.text = data.text;
+        botMessage.status = "completed";
+      }
+      
+      setMessages((prev) => {
+        const newMessages = [...prev];
+        newMessages[newMessages.length - 1] = botMessage; // Update the last message
+        return newMessages;
+      });
+      
     } catch (error) {
       console.error("Error: ", error);
     }
   };
+
+  const handleResetChat = () => {
+    setMessages([]);
+    setInput("");
+  }
 
   return (
     <>
@@ -62,38 +85,49 @@ const SlidingPanel: React.FC = () => {
         <RiChatSmileAiLine size={24} />
       </motion.button>
 
+
       <motion.div
-        className="z-40 fixed top-0 right-0 h-full w-3/5 bg-bboard text-white shadow-lg flex flex-col"
+        className="z-40 fixed top-0 right-0 h-full w-full lg:w-3/5 bg-bboard text-white shadow-xl flex flex-col"
         initial={{ x: "100%" }}
         animate={{ x: isOpen ? "0%" : "100%" }}
         transition={{ type: "spring", stiffness: 100, damping: 15 }}
       >
         {/* hidden h-[200px] sticky w-screen top-0 left-0 bg-gradient-to-b from-bboard from-30% via-bboard/50 via-70% */}
-        <div className="h-[75px] flex flex-row items-center justify-between">
-          <div></div>
+        <div className="h-[150px] absolute top-0 left-0 w-full bg-gradient-to-b from-bboard from-40% via-bboard/50 via-80% to-bboard/0">
+          {/* <div></div> */}
           <MotionComponent
-              src={Logo}
-              alt='Logo'
-              width={64}
-              height={64}
-              className='p-1 mx-3'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+            src={Logo}
+            alt='Logo'
+            width={64}
+            height={64}
+            className='p-1 mx-auto'
+            variants={logoVariant}
+            initial="initial"
+            animate="animate"
           />
-          <button className="p-2 text-themecolor" onClick={() => setIsOpen(false)}>
+          <button className="absolute m-2 p-2 text-themecolor top-0 right-0" onClick={() => setIsOpen(false)}>
             <IoClose size={24} />
           </button>
         </div>
 
-        <div className="px-5 overflow-x-hidden overflow-y-auto flex flex-col flex-1">
+        <div className="lg:px-5 mt-24 overflow-x-hidden overflow-y-auto flex flex-col flex-1">
           <div className="flex-1 overflow-y-auto p-4 space-y-2">
             {messages.map((msg, index) => (
               <MessageCard key={index} index={index} msg={msg} />
             ))}
             <div ref={chatEndRef} />
           </div>
-          
-          <div className="p-3 z-50 flex flex-row items-center pt-8">
+
+          <div className="p-3 z-50 flex flex-row items-center pt-4 lg:pt-8">
+            <motion.button
+              about="Reset Chat"
+              onClick={handleResetChat}
+              className="mr-2 p-2 rounded-full text-themecolor border-[1px] border-themecolor"
+              whileHover={{ scale: 1.1, backgroundColor: '#fb923c', color: '#1A1918' }}
+              transition={{ type: "spring", stiffness: 100 }}
+            >
+              <FaPlus size={20} />
+            </motion.button>
             <textarea
               className="flex-1 p-2 rounded-md bg-themeopacque text-white focus:outline-none resize-y field-sizing-content overflow-y-auto"
               placeholder="Type a message..."
@@ -102,6 +136,7 @@ const SlidingPanel: React.FC = () => {
               onKeyDown={(e) => e.key === "Enter" && handleMessageSend()}
             />
             <motion.button
+              about="Send message"
               onClick={handleMessageSend}
               className="ml-2 p-2 rounded-full text-themecolor border-[1px] border-themecolor"
               whileHover={{ scale: 1.1, backgroundColor: '#fb923c', color: '#1A1918' }}
