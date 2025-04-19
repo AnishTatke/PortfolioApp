@@ -110,9 +110,11 @@ export const links = [
 ] as const;
 
 export const heroData = [
-  "Hello, I'm Anish Tatke. I'm currently pursuing a Master’s degree in Computer Science with a specialization in Artificial Intelligence and Data Science.",
-  "Since childhood, technology has captivated me. My fascination began with retro games and DOS system programs, grew with the rise of the internet, and continued when I ran my first 'Hello World' program in C. As I delved into tools like Excel and Word, built my own web applications, discovered cloud technology, and witnessed the wonders of AI, I realized my passion lies in this broad field.",
-  "Given recent advancements in AI, I envision a world where technology serves as an aid, not a necessity for survival. I'm eager to contribute to this technology, improving it and finding innovative solutions that foster peace and prosperity. To make this vision a reality, I'm dedicated to learning more and developing swift, impactful, and efficient solutions to current challenges.",
+  "👋 Hi, I'm Anish Tatke",
+  "I'm a Master's student in Computer Science, specializing in Artificial Intelligence and Data Science.",
+  "My journey into tech started with retro games and tinkering with DOS programs. From building simple web apps to exploring cloud technologies and AI systems, I’ve always been driven by curiosity and a passion for problem-solving.",
+  "Today, I’m focused on creating meaningful, efficient, and scalable tech solutions that improve lives. With a deep interest in the ethical and impactful use of AI, I aim to contribute to innovations that empower society rather than make it dependent.",
+  "I’m actively seeking opportunities where I can apply my skills in AI, data science, and software development to real-world challenges. Let’s build something impactful together."
 ]
 
 export const experiencesData: ExperienceCardItem[] = [
@@ -121,10 +123,11 @@ export const experiencesData: ExperienceCardItem[] = [
     company: "Dee Dee Labs. Pvt. Ltd.",
     url: "https://deedeelabs.org/",
     location: "Pune, India",
-    description: "Interned at Dee Dee Labs, where I developed a mobile application where doctors could monitor patient progress and provide rehabilitation exercises. I also developed a prosthetic controlled video game for accelerating rehabilitation.",
+    description: "Contributed to the development of innovative digital health tools aimed at improving rehabilitation outcomes for amputee patients.",
     content: [
-      "Formulated and deployed a cross-platform mobile application featuring rehabilitation progress monitoring of patients with prosthetic devices",
-      "Fabricated an innovative video game in Unity controlled by prosthetic devices for rehabilitation of amputee patients"
+      "📱 Developed a cross-platform mobile app enabling doctors to remotely monitor patient recovery and assign personalized rehabilitation exercises for prosthetic users.",
+      "🎮 Built an interactive rehabilitation game in Unity, controlled by prosthetic devices, to make therapy more engaging and accelerate patient recovery.",
+      "🔄 Integrated real-time progress tracking and intuitive UI/UX to ensure usability for both clinicians and patients."
     ],
     profiles: [],
     skill: [
@@ -163,15 +166,15 @@ export const experiencesData: ExperienceCardItem[] = [
     url: "https://quantiphi.com/",
     location: "Bangalore, India",
     description:
-      "At Quantiphi Analytics, my primary work was designing and developing production-ready web applications and APIs for clients. I worked in collaboration with machine learning engineers, platform engineers and front-end designers to deliver high-quality products.",
+      "Collaborated cross-functionally with ML engineers, platform teams, and designers to build scalable, production-ready web applications and APIs for enterprise clients. Specialized in cloud-native architecture, data pipelines, and real-time analytics.",
     content: [
-      "Pioneered a user interface on GCP App Engine for Humana, leveraging sentiment analysis and speech-to-text processing of client data for actionable insights.",
-      "Devised an event-driven architecture integrating Cloud Bucket and MongoDB, streamlining and automating record processing",
-      "Developed an interactive ReactJS platform for customer call analysis for Gryphon, featuring a backend API for generating speech-to-text transcripts, analyzing call sentiment, and populating SQL databases.",
-      "Delivered real-time analytics on call performance, empowering data-driven decision-making",
-      "Engineered a cloud-native application for processing handwritten documents using NLP for TIAA, advancing business analytics capabilities.",
-      "Curated a comprehensive dashboard by consolidating client data and prediction results with PostgreSQL queries",
-      "Earned Google Cloud Associate Cloud Engineer (ACE) Certification, enhancing expertise in cloud development and deployments, contributing to the successful delivery of multiple applications on GCP."
+      "🚀 Built a GCP App Engine interface for Humana integrating sentiment analysis and speech-to-text processing to drive client insights.",
+      "⚙️ Designed an event-driven pipeline using Cloud Storage and MongoDB to automate and streamline record ingestion and processing.",
+      "📊 Developed an interactive ReactJS dashboard for Gryphon, backed by a custom API for speech-to-text transcription, sentiment detection, and SQL data population.",
+      "📈 Enabled real-time call analytics to support faster, insight-driven business decisions.",
+      "📝 Engineered an NLP-based application for TIAA to extract data from handwritten documents, improving internal analytics workflows.",
+      "📋 Curated a comprehensive data dashboard using PostgreSQL to unify client data and ML predictions for reporting.",
+      "☁️ Certified Google Cloud Associate Cloud Engineer (ACE); leveraged GCP for rapid deployment, scalability, and cost-effective solutions."
     ],
     profiles: ["Framework Engineer"],
     skill: [
@@ -204,11 +207,11 @@ export const experiencesData: ExperienceCardItem[] = [
     company: "Computational Medical Imaging Lab, University of Florida",
     url: "https://cmilab.nephrology.medicine.ufl.edu/",
     location: "Gainesville",
-    description: "Working as ML Expertise Research Assistant, I'm involved in developing machine learning models for medical imaging applications. I'm currently working on a developing end-to-end plugins for training and inference on histo-pathological applications.",
+    description: "Contributing to the development of machine learning solutions for histopathological image analysis, with a focus on end-to-end training and inference workflows.",
     content: [
-      "Trained advanced segmentation models with HiPerGator’s A100 GPUs for detecting nephrological features required for pathology.",
-      "Implemented cutting-edge morphology and image processing to enhance prediction results",
-      "Deployed complete AI pipelines as Docker plugins on cloud platforms for inference",
+      "🧪 Trained advanced segmentation models on HiPerGator’s A100 GPU cluster to identify nephrological features critical for kidney pathology",
+      "🔍 Applied state-of-the-art morphological and image processing techniques to improve model accuracy and diagnostic relevance",
+      "☁️ Deployed full AI inference pipelines as containerized Docker plugins, optimized for cloud-based medical imaging platforms.",
     ],
     profiles: [],
     // skills: ["Python", "Tensorflow", "PyTorch", "OpenCV", "Docker", "Deep Learning", "Image Processing"],
@@ -241,8 +244,6 @@ export const educationsData: EducationCardItem[] = [
     school: "University of Florida",
     url: "https://www.ufl.edu/",
     location: "Gainesville, FL",
-    description:
-      "I'm studying Computer Science with a focus on Machine Learning and Artificial Intelligence. I'm currently seeking full-time opportunities in areas such as Machine Learning, Data Science, and Software Development.",
     courses: ["Advanced Machine Learning", "Advanced Data Structures", "Computer Vision", "Data Engineering, Software Engineering", "AI Ethics", "Distributed Operating Systems"],
     image: "url",
     date: "August 2023 - Present",
@@ -253,8 +254,6 @@ export const educationsData: EducationCardItem[] = [
     school: "MIT World Peace University",
     url: "https://mitwpu.edu.in/",
     location: "Pune, India",
-    description:
-      "I graduated with a Bachelor's degree in Computer Science, where I learned the basics of the field and gained in-depth knowledge of engineering disciplines for problem-solving. I led various projects and workshops affiliated with university clubs, helping my leadership and communication skills.",
     courses: ["Data Structures", "Algorithms", "Web Development", "Database Management", "Operating Systems", "Computer Networks", "Software Engineering"],
     image: "url",
     date: "June 2017 - June 2021",
@@ -299,7 +298,7 @@ export const projectsData: ProjectCardItem[] = [
         skills: ["Firebase", "Figma"],
       }
     ],
-    image: "",
+    image: ["1bWrBXYXmCPOwqLEwE6CgWY4kgX7cKtQJ"],
   },
   {
     title: "Garbage Classification using Deep Learning",
@@ -345,7 +344,29 @@ export const projectsData: ProjectCardItem[] = [
         skills: ["Firebase"],
       }
     ],
-    image: "1VNS1H5l6QnAr5i5ztDrZf-TErqVHelI9"
+    image: ["1VNS1H5l6QnAr5i5ztDrZf-TErqVHelI9"]
+  },
+  {
+    title: "BERT Movie Plot Classification",
+    links: [],
+    description: "",
+    content: [
+      "Utilized pandas and spaCy’s Rule-based Matching in Python to preprocess, harmonize genres and perform EDA on Kaggle’s WikiMovie dataset.",
+      "Fine-tuned the DistilBERT model from HuggingFace over 12k single-genre movies, achieving an 86% accuracy in multiclass classification task."
+    ],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["transformers", "spaCy", "numpy", "Pandas"],
+      }
+    ],
+    image: [""],
   },
   {
     title: "Prog Rock vs World",
@@ -357,14 +378,14 @@ export const projectsData: ProjectCardItem[] = [
       },
     ],
     description:
-      "Trained models using various Deep Learning techniques to classify songs into Prog Rock and World Music genres.",
+      "Explored the use of deep learning for music genre classification by analyzing audio patterns and temporal features in song data.",
     content: [
-      "Performed comprehensive research on audio classification models and data analysis techniques.",
-      "Extracted key features like Mel-Spectrogram, Chromagram, and MFCCs for every 10-second snippet of every song.",
-      "Architectured a binary classification model using Convolutional Neural Networks (CNNs) for distinguishing between Progressive and Non-Progressive Rock snippets,  achieving a validation accuracy of about 74% - 75%.",
-      "Implemented models such as Simple Voting classifiers, RNNs, and LSTM networks for making predictions over songs(all snippets combined) achieving validation accuracy of about 85% - 86%."
+      "🔍 Conducted in-depth research on audio signal processing and classification techniques for music genre prediction.",
+      "🎧 Extracted key audio features such as Mel-Spectrograms, Chromagrams, and MFCCs from 10-second song snippets to represent timbral and harmonic characteristics.",
+      "🧠 Designed a CNN-based binary classifier to distinguish between Progressive Rock and Non-Progressive segments, achieving ~75% validation accuracy.",
+      "🗳️ Built ensemble and sequence models, including Voting Classifiers, RNNs, and LSTMs, to aggregate predictions across full-length songs, improving accuracy to ~86%.",
+      "🧪 Evaluated models using metrics like precision, recall, and confusion matrices to refine predictions and reduce false positives."
     ],
-    // tags: ["Python", "PyTorch", "Librosa", "Pandas", "Numpy", "Matplotlib", "Scikit-learn"],
     skill: [
       {
         title: "Programming Languages",
@@ -377,7 +398,7 @@ export const projectsData: ProjectCardItem[] = [
         skills: ["PyTorch", "numpy", "Scikit-Learn", "Pandas"],
       },
     ],
-    image: "1CXJ2yK2noV1KZpRdku-vZQjqvUT8bnZE",
+    image: ["1KSADe-Rf5sltSpjy_jMj295gtmYCMNCG", "1CXJ2yK2noV1KZpRdku-vZQjqvUT8bnZE", "1S106uP3eybTZ-6kWtSwh9V0g8pGjAVu3"],
   },
   {
     title: "QuickQuiz",
@@ -388,15 +409,14 @@ export const projectsData: ProjectCardItem[] = [
         "icon": React.createElement(FaGithub)
       },
     ],
-    description: "Project built at ShellHacks 2024, a hackathon hosted for all tech enthusiasts in Southeast USA. My team and I built an AI-powered tool provided for anyone to learn anything faster, better and on their own.",
+    description: "Project built at ShellHacks 2024, a hackathon hosted for all tech enthusiasts in Southeast USA. Built an AI-driven web platform designed to help users learn faster and more independently by combining NLP, adaptive assessment, and voice accessibility.",
     content: [
-      "Devised an AI-powered React web app using Material-UI and SCSS.",
-      "Built a Flask backend to parse PDFs, extract text, and perform chunking, tokenization and embedding in VectorDB.",
-      "Integrated OpenAI's GPT-3 for generating summaries, answering doubts and providing explanations.",
-      "Build feature to generate quizzes and flashcards, with dynamic difficulty levels and adaptive scoring mechanism.",
-      "We also provided voice assistance features, adding inclusivity and accessibility to the app."
+      "💻 Developed a responsive web app using React, Material-UI, and SCSS for a sleek and intuitive user experience.",
+      "🧠 Implemented a Flask backend to parse and process PDFs—performing text extraction, chunking, tokenization, and embedding content into a VectorDB.",
+      "🤖 Integrated GPT-3 APIs to generate contextual summaries, answer user questions, and deliver on-demand explanations.",
+      "📝 Designed an intelligent quiz & flashcard system with dynamic difficulty adjustment and adaptive scoring to personalize learning.",
+      "🎙️ Added voice assistant features to enhance accessibility and support inclusive learning for diverse users."
     ],
-    // tags: ["React.JS", "Flask", "OpenAI", "Python", "Flask", "ChromaDB"],
     skill: [
       {
         title: "Programming Languages",
@@ -419,8 +439,8 @@ export const projectsData: ProjectCardItem[] = [
         skills: ["ChromaDB"],
       }
     ],
-    image: "18Nj48OkRIsaNb2z814WyXDmzWexclCjE",
-  }
+    image: ["18Nj48OkRIsaNb2z814WyXDmzWexclCjE", "1E7HsdVFc4QxDaZijANNz8gWxPpMDAx6C","1pbh0iwIp_pTpH84ccBvpDQuP_g0RYkq2", "1erWyoTCj9SZ4vEU-PlLLu2f6wOlA4dmj"],
+  },
 ] as const;
 
 export const skillsData: SkillTypeItem[] = [

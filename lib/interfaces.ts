@@ -32,7 +32,6 @@ export interface EducationCardItem {
     school: string;
     url: string;
     location: string;
-    description: string;
     courses: string[];
     image: string;
     date: string;
@@ -44,7 +43,7 @@ export interface ProjectCardItem {
     description: string;
     content: string[];
     skill: SkillTypeItem[];
-    image: string;
+    image: string[];
 }
 
 export interface SkillTypeItem {

@@ -8,6 +8,7 @@ import { getGDriveImageLink } from '@/lib/services';
 import NextImage from  'next/image';
 import { Image } from "@nextui-org/react";
 import VerticalDivider from '@/app/components/VerticalDivider';
+import { ImageCarousel, ImageDisplay } from './ImageDisplay';
 
 const DateRange: React.FC<{ date: string, isExpanded: boolean }> = ({ date, isExpanded }) => {
     const [startDate, endDate] = date.split('-').map(date => date.trim());
@@ -49,7 +50,7 @@ export const Card: React.FC<{ children: React.ReactNode, isExpanded: boolean, on
 export const CourseList: React.FC<{ courses: string[], isExpanded: boolean }> = ({ courses, isExpanded }) => {
     if (isExpanded && courses.length > 0) {
         return (
-            <div className='flex flex-col justify-start mt-3 lg:mt-0'>
+            <div className='flex flex-col justify-start mt-3 lg:mt-1'>
                 <h2 className='text-themecolor'>Courses</h2>
                 <p className='text-sm mr-1 text-wrap'>
                     {courses.map((course, index) => {
@@ -241,12 +242,11 @@ export const EducationCard: React.FC<{ education: EducationCardItem }> = ({ educ
         <Card isExpanded={isExpanded} onClick={() => setIsExpanded(!isExpanded)}>
             {/* Laptop Screen */}
             <div className='hidden lg:flex flex-row h-max'>
-                <div className='w-2/5 flex flex-col justify-between'>
+                <div className='w-1/3 flex flex-col justify-between'>
                     <DateRange date={education.date} isExpanded={isExpanded} />
-                    <CourseList courses={education.courses} isExpanded={isExpanded}/>
                 </div>
                 <VerticalDivider isExpanded={isExpanded}/>
-                <div className='w-3/5 flex flex-col ml-3'>
+                <div className='w-2/3 flex flex-col ml-3'>
                     <div className='w-full flex flex-row justify-between'>
                         <h1 className='text-lg font-semibold tracking-wider text-themecolor'>{education.title} : {education.majors}</h1>
                         {isExpanded && <h1 className='hidden xl:block'>{education.location}</h1>}
@@ -260,12 +260,7 @@ export const EducationCard: React.FC<{ education: EducationCardItem }> = ({ educ
                             {education.school}
                     </motion.a>
                     {isExpanded && <h1 className='block xl:hidden'>{education.location}</h1>}
-                    <div className='mt-5'>
-                        {isExpanded ? 
-                            <p className='text-sm'>{education.description}</p> :
-                            <p className='text-sm line-clamp-2'>{education.description}</p>
-                        }
-                    </div>
+                    <CourseList courses={education.courses} isExpanded={isExpanded}/>
                 </div>
             </div>
             {/* Mobile Screen */}
@@ -285,18 +280,13 @@ export const EducationCard: React.FC<{ education: EducationCardItem }> = ({ educ
                             <DateRange date={education.date} isExpanded={isExpanded} />
                             {education.location && <h1 className='w-fit self-end'>{education.location}</h1>}
                         </div>
+                        {/* <CourseList courses={education.courses} isExpanded={isExpanded}/> */}
                     </div>
                     <div className='hidden sm:flex w-1/2 flex-col justify-between'>
                         <DateRange date={education.date} isExpanded={isExpanded} />
                         {isExpanded && education.location && <h1 className='w-fit self-end'>{education.location}</h1>}
                     </div>
                 </div>
-                {isExpanded && 
-                    <div className='flex flex-col py-2'>
-                        <p>{education.description}</p>
-                        <CourseList courses={education.courses} isExpanded={isExpanded}/>
-                    </div>
-                }
             </div>
         </Card>
     )
@@ -309,25 +299,18 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
             {/* Laptop Screen */}
             <div className='hidden xl:flex flex-row h-max'>
                 <div className='w-auto flex flex-col justify-between'>
-                    {isExpanded ? <div className='relative p-1 mx-2 w-fit min-w-[400px] h-full border-[1px] border-themecolor/[0.5]'>
-                        <Image
-                            removeWrapper
-                            as={NextImage}
-                            fill
-                            src={getGDriveImageLink(project.image)}
-                            alt={project.title}
+                    {project.image.length > 1 ?
+                        <ImageCarousel
+                            images={project.image}
+                            title={project.title}
+                            isExpanded={isExpanded}
+                        /> : 
+                        <ImageDisplay
+                            id={project.image[0]}
+                            title={project.title}
+                            isExpanded={isExpanded}
                         />
-                    </div>
-                    :
-                    <div className='relative p-1 mx-2 w-fit min-w-[200px] h-full border-[1px] border-themecolor/[0.5]'>
-                        <Image
-                            removeWrapper
-                            as={NextImage}
-                            fill
-                            src={getGDriveImageLink(project.image)}
-                            alt={project.title}
-                        />
-                    </div>}
+                    }
                 </div>
                 <VerticalDivider isExpanded={isExpanded}/>
                 <div className='w-auto px-3 flex flex-col justify-start'>
@@ -387,28 +370,6 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                             </motion.ul>
                         }
                     </div>
-
-                    {/* {isExpanded && project.links.length > 0 && <div 
-                        className='my-2 p-2 flex flex-row justify-start w-fit'
-                    >
-                        {project.links.map((link, index) => (
-                            <motion.a 
-                                key={index} 
-                                href={link.url} 
-                                className='mr-10 text-3xl'
-                                initial={{
-                                    scale: 1,
-                                    color: '#ffffff'
-                                }}
-                                whileHover={{
-                                    scale: 1.2,
-                                    color: '#fb923c'
-                                }}
-                            >
-                                {link.icon}
-                            </motion.a>
-                        ))}
-                    </div>} */}
                 </div>
             </div>
 
@@ -421,7 +382,7 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                         width={400}
                         height={150}
                         className='m-1 mx-auto'
-                        src={getGDriveImageLink(project.image)}
+                        src={getGDriveImageLink(project.image[0])}
                         alt={project.title}
                     />
                 </div>
