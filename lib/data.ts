@@ -67,6 +67,8 @@ import {
   SiOpencv,
   SiSpacy,
   SiHuggingface,
+  SiStreamlit,
+  SiFastapi
 } from "react-icons/si";
 import { 
   DiRedis,
@@ -261,98 +263,114 @@ export const educationsData: EducationCardItem[] = [
 ] 
 
 export const projectsData: ProjectCardItem[] = [
+  // AI-Powered Historenal Layer Computation
   {
-    title: "EenthPathar",
+    title: "AI-Powered Historenal Layer Computation for Transplant Assessment",
     links: [
       {
         "name": "Github",
-        "url": "https://github.com/AnishTatke/EenthPatthar",
+        "url": "https://github.com/SarderLab/IntimalThickness",
         "icon": React.createElement(FaGithub)
       },
     ],
-    description:
-      "EenthPatthar is a web application for property transactions, connecting buyers and sellers for efficient interactions.",
+    description: "Developed a deep learning pipeline for segmenting kidney biopsy images and extracting diagnostic metrics to assist transplant decision-making.",
     content: [
-      "Designed Figma frames for a commercial real estate website, implemented in React-Bootstrap with Material UI for layout elements, seamless navigation and data display.",
-      "Programmed a Node.JS backend with REST-API to manage data interactions with Firestore database, and integrated Firebase authentication to ensure secure user access."
+      "🤝 Collaborated with cross-university medical teams to manage and preprocess a diverse dataset of kidney biopsy images as part of a funded research initiative in transplant diagnostics.",
+      "🧠 Trained an Attention-UNet segmentation model using custom loss functions and robust model selection strategies, achieving a Dice score of 69.4% and classification accuracy of 92.1%.",
+      "🖼️ Engineered a post-processing pipeline combining computer vision techniques and morphological operations to calculate arterial layer thickness along radial axes.",
+      "📏 Enabled granular, quantitative analysis of arterial structures—providing pathologists with AI-assisted metrics to improve transplant evaluation.",
+      "🔬 Supported downstream clinical research by converting complex segmentation outputs into interpretable, high-impact diagnostic features."
     ],
     skill: [
       {
         title: "Programming Languages",
         type: "programming language",
-        skills: ["JavaScript", "TypeScript", "Bootstrap"],
+        skills: ["Python"],
+      },
+      {
+        title: "Web Development",
+        type: "webdev",
+        skills: ["streamlit"]
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["PyTorch", "CUDA", "OpenCV", "numpy", "Scikit-Learn",  "Pandas"],
+      },
+      {
+        title: "Frameworks",
+        type: "framework",
+        skills: ["Docker", "Git"],
+      },
+    ],
+    image: ["1bo5gioHEC4ddrfRbRgXzyZX23SG26suS", "1cROjqsmfaQZLp7HvwIpFEJ1J3q8SUytH", "174auQaXDxwfoPSMRP8Zl26J_s_dzhvlE", "1vO0cdIdjHhKRlw8bloF_8IBw47WpffXb", "1OWGyQZu6WXOyar1Q0pH2se5pcIUX3XbJ"],
+    // https://drive.google.com/file/d/1bo5gioHEC4ddrfRbRgXzyZX23SG26suS/view?usp=sharing
+    // https://drive.google.com/file/d/1cROjqsmfaQZLp7HvwIpFEJ1J3q8SUytH/view?usp=sharing
+    // https://drive.google.com/file/d/174auQaXDxwfoPSMRP8Zl26J_s_dzhvlE/view?usp=sharing
+    // https://drive.google.com/file/d/1vO0cdIdjHhKRlw8bloF_8IBw47WpffXb/view?usp=sharing
+    // https://drive.google.com/file/d/1OWGyQZu6WXOyar1Q0pH2se5pcIUX3XbJ/view?usp=sharing
+  },
+  // Conversational RAG Chatbot for Resume QA
+  {
+    title: "Conversational RAG Chatbot for Resume QA",
+    links: [
+      {
+        "name": "Github",
+        "url": "",
+        "icon": React.createElement(FaGithub)
+      },
+    ],
+    description: "Built an AI-powered assistant capable of answering recruiter-style questions by leveraging resume data through retrieval-augmented generation (RAG).",
+    content: [
+      "🧠 Designed a personalized, resume-aware chatbot by integrating large language models (LLMs) with vector-based retrieval for multi-turn, context-rich conversations.",
+      "🛠️ Implemented an NLP pipeline to parse, chunk, and embed structured/unstructured resume content into a vector database for efficient semantic search.",
+      "⚡ Achieved low-latency retrieval and real-time response generation using FAISS for indexing and OpenAI’s LLMs for generation.",
+      "🧪 Validated across 50+ recruiter-style prompts, attaining 90%+ response relevance and realism through persona conditioning and memory integration.",
+      "🤖 Enhanced user experience with context retention and conversational history, simulating a natural Q&A session with a job applicant."
+    ],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["OpenAI", "Langchain", "Langgraph"],
+      },
+      {
+        title: "Web Development",
+        type: "webdev",
+        skills: ["FastAPI"],
       },
       {
         title: "Databases",
         type: "database",
-        skills: ["Firestore"],
-      },
-      {
-        title: "Web Development",
-        type: "webdev",
-        skills: ["React.JS", "Node.JS"],
-      },
-      {
-        title: "Cloud Technologies",
-        type: "cloud",
-        skills: ["Firebase", "Figma"],
+        skills: ["Pinecone"],
       }
     ],
-    image: ["1bWrBXYXmCPOwqLEwE6CgWY4kgX7cKtQJ"],
+    image: ["1jYiM8pgUtyCcRicZL-oAng9pxOoGG8ON", "1CTjJ1Ub1NngPlxFfgaZqGTX-ULWMugjT"],
+    // https://drive.google.com/file/d/1jYiM8pgUtyCcRicZL-oAng9pxOoGG8ON/view?usp=sharing
+    // https://drive.google.com/file/d/1CTjJ1Ub1NngPlxFfgaZqGTX-ULWMugjT/view?usp=sharing
   },
+  // Latent Stable Diffusion
   {
-    title: "Garbage Classification using Deep Learning",
+    title: "Latent Stable Diffusion – Pokémon Image Generator",
     links: [
       {
-        "name": "Paper",
-        "url": "https://ieeexplore.ieee.org/document/9573599",
-        "icon": React.createElement(SiIeee)
-      },
-      {
         "name": "Github",
-        "url": "https://github.com/AnishTatke/Garbage-Detection-Application",
+        "url": "https://github.com/AnishTatke/StableDiffusionAML",
         "icon": React.createElement(FaGithub)
-      },
-    ],
-    description:
-      "Trained image classification models on garbage and non-garbage image dataset. Deployed the model on a mobile application and published a paper in an IEEE journal.",
-    content: [
-      "Trained various image classification models on curated datasets and their deployment on a tailored mobile application. Furthermore, implemented image processing techniques on datasets, leading to accuracy improvements of 10-15%",
-      "Built a cross-platform mobile application with Flutter SDK, featuring pre-loaded Tensorflow Lite-optimized models. Conducted optimizations to reduce latency by 30% and file size by 45%.",
-      "Published a paper in an IEEE journal that analyzes the performance of the models."
-    ],
-    // tags: ["Python", "Tensorflow", "Flutter", "Dart", "Firebase"],
-    skill: [
-      {
-        title: "Programming Languages",
-        type: "programming language",
-        skills: ["Python", "Dart"],
-      },
-      {
-        title: "Machine Learning/AI",
-        type: "mlai",
-        skills: ["Tensorflow", "OpenCV"],
-      },
-      {
-        title: "Web Development",
-        type: "webdev",
-        skills: ["Flutter"],
-      },
-      {
-        title: "Cloud Technologies",
-        type: "cloud",
-        skills: ["Firebase"],
       }
     ],
-    image: ["1VNS1H5l6QnAr5i5ztDrZf-TErqVHelI9"]
-  },
-  {
-    title: "BERT Movie Plot Classification",
-    links: [],
-    description: "",
+    description: "Built a generative AI model using diffusion techniques to synthesize high-quality Pokémon-style images from text prompts.",
     content: [
-      "Utilized pandas and spaCy’s Rule-based Matching in Python to preprocess, harmonize genres and perform EDA on Kaggle’s WikiMovie dataset.",
-      "Fine-tuned the DistilBERT model from HuggingFace over 12k single-genre movies, achieving an 86% accuracy in multiclass classification task."
+      "🧠 Trained multiple diffusion models—including conditional, unconditional, and latent stable diffusion architectures—on a custom Pokémon image-caption dataset using PyTorch and A100 GPUs.",
+      "🔄 Implemented advanced training techniques such as Exponential Moving Average (EMA) and latent space projection to stabilize training and improve image fidelity.",
+      "🧪 Experimented with Denoising Diffusion Probabilistic Models (DDPMs) and customized loss functions to refine generation quality.",
+      "📊 Conducted extensive evaluations on sample diversity, realism, and text-to-image alignment, leading to visibly improved output across iterations.",
+      "🚀 Focused on optimizing training time and memory usage to support high-resolution generation on large-scale GPU infrastructure."
     ],
     skill: [
       {
@@ -363,43 +381,14 @@ export const projectsData: ProjectCardItem[] = [
       {
         title: "Machine Learning/AI",
         type: "mlai",
-        skills: ["transformers", "spaCy", "numpy", "Pandas"],
-      }
+        skills: ["PyTorch", "numpy", "Huggingface"],
+      },
     ],
-    image: [""],
+    image: ["1dLjk5g8X5004Si39eV794RYpHHY8zDy4", "1UEFIVGgtWNirKtecyepZU3TNOBgikETd"],
+    // https://drive.google.com/file/d/1UEFIVGgtWNirKtecyepZU3TNOBgikETd/view?usp=sharing
+    // https://drive.google.com/file/d/1dLjk5g8X5004Si39eV794RYpHHY8zDy4/view?usp=sharing
   },
-  {
-    title: "Prog Rock vs World",
-    links: [
-      {
-        "name": "Github",
-        "url": "https://github.com/AnishTatke/ProgRock-vs-World",
-        "icon": React.createElement(FaGithub)
-      },
-    ],
-    description:
-      "Explored the use of deep learning for music genre classification by analyzing audio patterns and temporal features in song data.",
-    content: [
-      "🔍 Conducted in-depth research on audio signal processing and classification techniques for music genre prediction.",
-      "🎧 Extracted key audio features such as Mel-Spectrograms, Chromagrams, and MFCCs from 10-second song snippets to represent timbral and harmonic characteristics.",
-      "🧠 Designed a CNN-based binary classifier to distinguish between Progressive Rock and Non-Progressive segments, achieving ~75% validation accuracy.",
-      "🗳️ Built ensemble and sequence models, including Voting Classifiers, RNNs, and LSTMs, to aggregate predictions across full-length songs, improving accuracy to ~86%.",
-      "🧪 Evaluated models using metrics like precision, recall, and confusion matrices to refine predictions and reduce false positives."
-    ],
-    skill: [
-      {
-        title: "Programming Languages",
-        type: "programming language",
-        skills: ["Python"],
-      },
-      {
-        title: "Machine Learning/AI",
-        type: "mlai",
-        skills: ["PyTorch", "numpy", "Scikit-Learn", "Pandas"],
-      },
-    ],
-    image: ["1KSADe-Rf5sltSpjy_jMj295gtmYCMNCG", "1CXJ2yK2noV1KZpRdku-vZQjqvUT8bnZE", "1S106uP3eybTZ-6kWtSwh9V0g8pGjAVu3"],
-  },
+  // QuickQuiz
   {
     title: "QuickQuiz",
     links: [
@@ -440,6 +429,206 @@ export const projectsData: ProjectCardItem[] = [
       }
     ],
     image: ["18Nj48OkRIsaNb2z814WyXDmzWexclCjE", "1E7HsdVFc4QxDaZijANNz8gWxPpMDAx6C","1pbh0iwIp_pTpH84ccBvpDQuP_g0RYkq2", "1erWyoTCj9SZ4vEU-PlLLu2f6wOlA4dmj"],
+  },
+  // BERT Movie Plot Classification
+  {
+    title: "BERT Movie Plot Classification",
+    links: [],
+    description: "Built a robust pipeline for classifying movie genres based on plot summaries using modern NLP techniques and deep learning models.",
+    content: [
+      "🧹 Preprocessed and cleaned Kaggle’s WikiMovie dataset using pandas and spaCy's Rule-based Matcher to normalize text and harmonize inconsistent genre labels.",
+      "📊 Performed Exploratory Data Analysis (EDA) to identify genre distributions, class imbalances, and plot length variations across thousands of movie summaries.",
+      "🔍 Applied stratified sampling to maintain balanced genre representation across train, validation, and test sets for better generalization.",
+      "🧠 Fine-tuned DistilBERT from HuggingFace Transformers on a multiclass genre classification task, leveraging cross-entropy loss for model training.",
+      "📈 Achieved 86% accuracy on unseen plot summaries, demonstrating strong generalization in genre prediction."
+    ],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["transformers", "spaCy", "numpy", "Pandas"],
+      }
+    ],
+    image: ["1Cm4-SEiR2mcFTvAQ-seRv8yhu57E4b1x", "1u8U5XyL-KpYdX33bDJ-A3lNByWKr_BfQ", "143JEQe3jXUmBuLJS7umj40kxgXwH0M8q", "1QKRpQbNJhPTLyHybIPAvBwMQemZnq2G0", "1jwrGL_LC7bih49cDcG4WoJeVmSBoQsp8"],
+    /*
+    thumbnail: https://drive.google.com/file/d/1Cm4-SEiR2mcFTvAQ-seRv8yhu57E4b1x/view?usp=sharing
+    genre_distribution: https://drive.google.com/file/d/1u8U5XyL-KpYdX33bDJ-A3lNByWKr_BfQ/view?usp=sharing
+    wordcloud: https://drive.google.com/file/d/143JEQe3jXUmBuLJS7umj40kxgXwH0M8q/view?usp=sharing
+    plot_lengths: https://drive.google.com/file/d/1QKRpQbNJhPTLyHybIPAvBwMQemZnq2G0/view?usp=sharing
+    harmonized_genres: https://drive.google.com/file/d/1jwrGL_LC7bih49cDcG4WoJeVmSBoQsp8/view?usp=sharing
+    */
+  },
+  // Prog Rock vs World
+  {
+    title: "Prog Rock vs World",
+    links: [
+      {
+        "name": "Github",
+        "url": "https://github.com/AnishTatke/ProgRock-vs-World",
+        "icon": React.createElement(FaGithub)
+      },
+    ],
+    description:
+      "Explored the use of deep learning for music genre classification by analyzing audio patterns and temporal features in song data.",
+    content: [
+      "🔍 Conducted in-depth research on audio signal processing and classification techniques for music genre prediction.",
+      "🎧 Extracted key audio features such as Mel-Spectrograms, Chromagrams, and MFCCs from 10-second song snippets to represent timbral and harmonic characteristics.",
+      "🧠 Designed a CNN-based binary classifier to distinguish between Progressive Rock and Non-Progressive segments, achieving ~75% validation accuracy.",
+      "🗳️ Built ensemble and sequence models, including Voting Classifiers, RNNs, and LSTMs, to aggregate predictions across full-length songs, improving accuracy to ~86%.",
+      "🧪 Evaluated models using metrics like precision, recall, and confusion matrices to refine predictions and reduce false positives."
+    ],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["PyTorch", "numpy", "Scikit-Learn", "Pandas"],
+      },
+    ],
+    image: ["1KSADe-Rf5sltSpjy_jMj295gtmYCMNCG", "1CXJ2yK2noV1KZpRdku-vZQjqvUT8bnZE", "1S106uP3eybTZ-6kWtSwh9V0g8pGjAVu3"],
+  },
+  // Eenth Pathhar
+  {
+    title: "EenthPathar",
+    links: [
+      {
+        "name": "Github",
+        "url": "https://github.com/AnishTatke/EenthPatthar",
+        "icon": React.createElement(FaGithub)
+      },
+    ],
+    description:
+      "EenthPatthar: A full-stack web application to streamline property transactions by enabling seamless interactions between buyers and sellers.",
+    content: [
+      "🎨 Designed high-fidelity UI mockups using Figma, focusing on intuitive navigation and a clean layout tailored for commercial real estate listings.",
+      "💻 Implemented the frontend using React-Bootstrap and Material UI, ensuring responsive design and smooth user experience across devices.",
+      "🔧 Built a scalable backend with Node.js and Express, exposing RESTful APIs for dynamic property data handling.",
+      "🔐 Integrated Firebase Authentication for secure user login and role-based access, enhancing platform security.",
+      "🗂️ Connected the application to Firestore, enabling real-time data storage and retrieval for listings, transactions, and user profiles."
+    ],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["JavaScript", "TypeScript", "Bootstrap"],
+      },
+      {
+        title: "Databases",
+        type: "database",
+        skills: ["Firestore"],
+      },
+      {
+        title: "Web Development",
+        type: "webdev",
+        skills: ["React.JS", "Node.JS"],
+      },
+      {
+        title: "Cloud Technologies",
+        type: "cloud",
+        skills: ["Firebase", "Figma"],
+      }
+    ],
+    image: ["1bWrBXYXmCPOwqLEwE6CgWY4kgX7cKtQJ"],
+  },
+  // Garbage Classification
+  {
+    title: "Garbage Classification using Deep Learning",
+    links: [
+      {
+        "name": "Paper",
+        "url": "https://ieeexplore.ieee.org/document/9573599",
+        "icon": React.createElement(SiIeee)
+      },
+      {
+        "name": "Github",
+        "url": "https://github.com/AnishTatke/Garbage-Detection-Application",
+        "icon": React.createElement(FaGithub)
+      },
+    ],
+    description:
+      "Designed and deployed efficient deep learning pipelines for real-time image classification on mobile devices, with a focus on accuracy, speed, and usability.",
+    content: [
+      "🧠 Trained and evaluated multiple image classification models on curated datasets, integrating image preprocessing techniques that improved accuracy by 10–15%.",
+      "📲 Developed a cross-platform mobile application using Flutter SDK, embedding TensorFlow Lite–optimized models for seamless on-device inference.",
+      "⚡ Optimized model performance by reducing latency by 30% and decreasing model file size by 45% through quantization and architecture tuning.",
+      "📄 Published a research paper in an IEEE journal that benchmarks model performance and explores the trade-offs between accuracy, speed, and deployment feasibility."
+    ],
+    // tags: ["Python", "Tensorflow", "Flutter", "Dart", "Firebase"],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python", "Dart"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["Tensorflow", "OpenCV"],
+      },
+      {
+        title: "Web Development",
+        type: "webdev",
+        skills: ["Flutter"],
+      },
+      {
+        title: "Cloud Technologies",
+        type: "cloud",
+        skills: ["Firebase"],
+      }
+    ],
+    image: ["1YOM5Nb1UrxjlQisPKcCGCJ7-wu5d7tMD", "1VNS1H5l6QnAr5i5ztDrZf-TErqVHelI9", "1pPgqB9Fc2WmacCiHUOjjkzy0t02goQ4n", "1yPuReq5v2dOPuuQBDpQstcsEAzAaW-bk"],
+    /*
+    thumbnail: https://drive.google.com/file/d/1YOM5Nb1UrxjlQisPKcCGCJ7-wu5d7tMD/view?usp=sharing
+    application 1: https://drive.google.com/file/d/1VNS1H5l6QnAr5i5ztDrZf-TErqVHelI9/view?usp=sharing
+    application 2: https://drive.google.com/file/d/1pPgqB9Fc2WmacCiHUOjjkzy0t02goQ4n/view?usp=sharing
+    results: https://drive.google.com/file/d/1yPuReq5v2dOPuuQBDpQstcsEAzAaW-bk/view?usp=sharing
+     */
+  },
+  // Covid 19 Virus Simulation
+  {
+    title: "Covid 19 Virus Simulation",
+    links: [
+      {
+        "name": "Github",
+        "url": "",
+        "icon": React.createElement(FaGithub)
+      },
+    ],
+    description: "Designed a visual simulation of virus transmission in a closed environment to study outbreak dynamics and mitigation scenarios.",
+    content: [
+      "🔬 Developed an epidemic model in Python to simulate the spread of COVID-19 within a bounded population using object-oriented principles.",
+      "🎥 Implemented real-time visualization and animation tools to display interactions between individuals and the evolution of infection over time.",
+      "⚙️ Defined dynamic class attributes such as infection radius, mortality rate, recovery time, and herd immunity thresholds to simulate real-world variability.",
+      "📏 Used proximity-based logic to update the infection status of agents (individuals), enabling realistic transmission based on movement and distance.",
+      "📊 Enabled experimentation with various public health scenarios like social distancing and immunity to observe their impact on infection curves."
+    ],
+    skill: [
+      {
+        title: "Programming Languages",
+        type: "programming language",
+        skills: ["Python"],
+      },
+      {
+        title: "Machine Learning/AI",
+        type: "mlai",
+        skills: ["numpy"],
+      },
+    ],
+    image: ["1QpEtL4jZGSQupWA_0nFjqYJZDCpERzce", "1GNkMNkDsAN200-X-wqOcZgsDsNAoZwTt", "1eyzE4GlWoHM4sDLJIMooZWIw5zpzQG_o", "1Jj2cJf0ImS4kxUXnowAkDL39PvcS7GKl"],
+    // https://drive.google.com/file/d/1QpEtL4jZGSQupWA_0nFjqYJZDCpERzce/view?usp=sharing
+    // https://drive.google.com/file/d/1eyzE4GlWoHM4sDLJIMooZWIw5zpzQG_o/view?usp=sharing
+    // https://drive.google.com/file/d/1vok4TJX4eu7l9A75H8R0upQhTUPDZAvG/view?usp=sharing
+    // https://drive.google.com/file/d/1Jj2cJf0ImS4kxUXnowAkDL39PvcS7GKl/view?usp=sharing
+    // https://drive.google.com/file/d/1GNkMNkDsAN200-X-wqOcZgsDsNAoZwTt/view?usp=sharing
   },
 ] as const;
 
@@ -524,6 +713,7 @@ export const skillIconMap: {[key: string]: any} = {
   "ionic": React.createElement(SiIonic),
   "flutter": React.createElement(SiFlutter),
   "bootstrap": React.createElement(FaBootstrap),
+  "fastapi": React.createElement(SiFastapi),
   // Machine Learning/AI
   "pytorch": React.createElement(SiPytorch),
   "tensorflow": React.createElement(SiTensorflow),
@@ -537,7 +727,9 @@ export const skillIconMap: {[key: string]: any} = {
   "opencv": React.createElement(SiOpencv),
   "spacy": React.createElement(SiSpacy),
   "transformers": React.createElement(SiHuggingface),
+  "huggingface": React.createElement(SiHuggingface),
   "openai": React.createElement(SiOpenai),
+  "streamlit": React.createElement(SiStreamlit),
   // Frameworks
   "git": React.createElement(FaGitAlt),
   "hadoop": React.createElement(SiApachehadoop),

@@ -13,11 +13,11 @@ const Projects: React.FC<{ projects: ProjectCardItem[] }> = ({projects}) => {
             <SectionTitle index={3} title='Projects' />
             <div className='h-auto'>
                 {isExpanded ? 
-                    [...projects].reverse().map((project, index) => (
+                    [...projects].map((project, index) => (
                         <ProjectCard key={index} project={project}/>
                     )) 
                     :
-                    [...projects].reverse().slice(0, 3).map((project, index) => (
+                    [...projects].slice(0, 3).map((project, index) => (
                         <ProjectCard key={index} project={project}/>
                     ))
                 }

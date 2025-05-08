@@ -8,7 +8,7 @@ const Skills: React.FC<{skillData: SkillTypeItem[]}> = ({skillData}) => {
     return (
         <div>
             <SectionTitle index={4} title='Skills' />
-            <div>
+            <div className='grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6'>
                 {skillData.map((skill, index) => (
                     <SkillTypeCard key={index} skilltype={skill}/>
                 ))}

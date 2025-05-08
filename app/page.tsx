@@ -31,10 +31,10 @@ export default function Home() {
 
       {/* Desktop */}
       <div className="hidden lg:flex h-screen">
-        <div className="w-2/5 h-full overflow-y-hidden pt-1">
+        <div className="min-w-[400px] w-2/5 h-full overflow-y-hidden pt-1">
           <LeftIntro data={links} contactData={contactData} />
         </div>
-        <div className="w-3/5 h-full overflow-y-auto overflow-x-hidden">
+        <div className="w-fit h-full overflow-y-auto overflow-x-hidden">
           <RightSection data={rightSectionData}/>
           <Footer contactData={contactData} />
         </div>

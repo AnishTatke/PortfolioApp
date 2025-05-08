@@ -33,14 +33,14 @@ const DateRange: React.FC<{ date: string, isExpanded: boolean }> = ({ date, isEx
     );
 }
 
-export const Card: React.FC<{ children: React.ReactNode, isExpanded: boolean, onClick:() => void }> = ({ children, isExpanded, onClick }) => {
+export const Card: React.FC<{ children: React.ReactNode, size?: string, isExpanded: boolean, onClick:() => void }> = ({ children, size, isExpanded, onClick }) => {
     return (
         <motion.div
             whileHover='hover'
             onClick={onClick}
             animate={isExpanded && 'animate'}
             variants={cardVariants}
-            className='my-3 lg:mx-3 w-full h-auto rounded-lg p-2 xl:p-4'
+            className={`my-3 lg:mx-3 w-${size && 'full'} h-auto rounded-lg p-2 xl:p-4`}
         >
             {children}
         </motion.div>
@@ -355,7 +355,7 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                     </div>
 
                     <div className='pt-2'>
-                        <p className='text-sm'>{project.description}</p>
+                        <p className='text-sm mb-1'>{project.description}</p>
                         {isExpanded && project.content.length > 0 && 
                             <motion.ul
                                 variants={faultVariant}
@@ -365,7 +365,7 @@ export const ProjectCard: React.FC<{ project: ProjectCardItem }> = ({ project })
                                 className='ml-2 px-2 list-disc'
                             >
                                 {project.content.map((content, index) => (
-                                    <li className='text-sm text-wrap' key={index}>{content}</li>
+                                    <li className='text-sm text-wrap mb-1' key={index}>{content}</li>
                                 ))}
                             </motion.ul>
                         }

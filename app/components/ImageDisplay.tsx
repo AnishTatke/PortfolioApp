@@ -6,10 +6,10 @@ import { useEffect, useState } from 'react';
 import { getGDriveImageLink } from '@/lib/services';
 
 export const ImageDisplay = ({ id, title, isExpanded }: { id: string, title: string, isExpanded: boolean }) => {
-    return(
+    return (
         <div className={`relative p-1 mx-2 w-fit ${isExpanded ? 'min-w-[400px]' : 'min-w-[200px]'
-                    } h-full border-[1px] border-themecolor/[0.5] rounded-md overflow-hidden`}>
-            <div className='relative w-full h-full'>
+            } h-full border-[1px] border-themecolor/[0.5] rounded-md overflow-hidden`}>
+            <div className={`relative w-full h-full ${isExpanded ? 'min-h-[280px]' : 'min-h-[120px]'}`}>
                 <Image
                     removeWrapper
                     as={NextImage}
@@ -29,7 +29,7 @@ export const ImageCarousel = ({ images, title, isExpanded }: { images: string[],
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 6000); 
+        }, 6000);
         return () => clearInterval(interval);
     }, [images.length]);
 
@@ -39,27 +39,40 @@ export const ImageCarousel = ({ images, title, isExpanded }: { images: string[],
                 className={`relative p-1 mx-2 w-fit ${isExpanded ? 'min-w-[400px]' : 'min-w-[200px]'
                     } h-full border-[1px] border-themecolor/[0.5] rounded-md overflow-hidden`}
             >
-                <div className="relative w-full h-full">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={index}
-                            className="absolute inset-0"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5, ease: 'easeInOut' }}
-                        >
-                            <Image
-                                removeWrapper
-                                as={NextImage}
-                                fill
-                                src={getGDriveImageLink(images[index])}
-                                alt={`${title} - ${index}`}
-                                className="object-cover rounded-sm"
-                            />
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+                {isExpanded ? (
+                    <div className="relative w-full h-full min-h-[280px]">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={index}
+                                className="absolute inset-0"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                            >
+                                <Image
+                                    removeWrapper
+                                    as={NextImage}
+                                    fill
+                                    src={getGDriveImageLink(images[index])}
+                                    alt={`${title} - ${index}`}
+                                    className="object-cover rounded-sm"
+                                />
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+                ) : (
+                    <div className='relative w-full h-full min-h-[120px]'>
+                        <Image
+                            removeWrapper
+                            as={NextImage}
+                            fill
+                            src={getGDriveImageLink(images[0])}
+                            alt={title}
+                            className="object-cover rounded-sm"
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );
