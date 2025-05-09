@@ -761,11 +761,11 @@ export const contactData = {
   resumes: [
     {
       name: "SD Resume",
-      url: "https://drive.google.com/file/d/19Ba8NZ0zO02wkgDMSRD9mo-FDY0IQeg0/view?usp=sharing",
+      url: "https://drive.google.com/file/d/1ppEKZ2VWbdxRcziHt7Aou_DSxQ7_0_Tk/view?usp=sharing",
     },
     {
       name: "ML Resume",
-      url: "https://drive.google.com/file/d/115MHGA2DVmzdMvg2sZucER0mVl0rBOhQ/view?usp=sharing",
+      url: "https://drive.google.com/file/d/1JSyW1uHeUpXatAOLAx0C_YraoC1FXQI_/view?usp=sharing",
     },
   ],
   socials: [
