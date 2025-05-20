@@ -170,13 +170,11 @@ export const experiencesData: ExperienceCardItem[] = [
     description:
       "Collaborated cross-functionally with ML engineers, platform teams, and designers to build scalable, production-ready web applications and APIs for enterprise clients. Specialized in cloud-native architecture, data pipelines, and real-time analytics.",
     content: [
-      "🚀 Built a GCP App Engine interface for Humana integrating sentiment analysis and speech-to-text processing to drive client insights.",
-      "⚙️ Designed an event-driven pipeline using Cloud Storage and MongoDB to automate and streamline record ingestion and processing.",
-      "📊 Developed an interactive ReactJS dashboard for Gryphon, backed by a custom API for speech-to-text transcription, sentiment detection, and SQL data population.",
-      "📈 Enabled real-time call analytics to support faster, insight-driven business decisions.",
-      "📝 Engineered an NLP-based application for TIAA to extract data from handwritten documents, improving internal analytics workflows.",
-      "📋 Curated a comprehensive data dashboard using PostgreSQL to unify client data and ML predictions for reporting.",
-      "☁️ Certified Google Cloud Associate Cloud Engineer (ACE); leveraged GCP for rapid deployment, scalability, and cost-effective solutions."
+      "🌐 Built AI-driven automation workflows using Vertex AI, Document AI, and Speech APIs to streamline document processing and enhance fraud detection systems.",
+      "📄 Designed end-to-end NLP pipelines for extracting insights from property documents and integrating structured outputs into BigQuery for downstream analytics.",
+      "⚙️ Engineered scalable microservices on GCP Kubernetes and App Engine, supporting event-driven data ingestion pipelines with SQL and MongoDB integration.",
+      "💻 Developed interactive web applications using ReactJS and NodeJS, embedding speech and language models to enable personalized user experiences.",
+      "🔍 Implemented fast, intuitive search functionality with ElasticSearch and built responsive dashboards using Material UI to visualize insights from NoSQL datasets."
     ],
     profiles: ["Framework Engineer"],
     skill: [

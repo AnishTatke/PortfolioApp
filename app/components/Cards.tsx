@@ -134,10 +134,10 @@ export const ExperienceCard: React.FC<{ experience: ExperienceCardItem }> = ({ e
                         </div>
                         {isExpanded && <h1 className='block xl:hidden'>{experience.location}</h1>}
                     </div>
-                    <div className='mt-5 flex flex-col justify-evenly'>
+                    <div className='mt-2 flex flex-col justify-evenly'>
                         <motion.p
                             variants={faultVariant}
-                            className='text-sm'
+                            className='text-sm leading-tight'
                             initial='initial'
                             animate='animate'
                             exit='exit'
